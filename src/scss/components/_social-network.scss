@@ -1,0 +1,12 @@
+.social-network-item {
+  display: inline-block;
+  margin-right: 5px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  a {
+    display: block;
+  }
+}

@@ -1,0 +1,33 @@
+/**
+* Table of Contents:
+*
+# Base
+# Layout
+# Components
+* -----------------------------------------------------------------------------
+*/
+
+@import "abstracts/abstracts";
+
+/**
+# Base
+-----------------------------------------------------------------------------*/
+@import "base/general";
+@import "base/wp-core";
+
+/**
+# Layout
+-----------------------------------------------------------------------------*/
+@import "layout/header";
+@import "layout/sidebar";
+@import "layout/footer";
+
+/**
+# Components
+-----------------------------------------------------------------------------*/
+@import "components/breadcrumbs";
+@import "components/cf7";
+@import "components/comment-form";
+@import "components/pagination";
+@import "components/owl-carousel";
+@import "components/social-network";

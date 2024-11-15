@@ -1,0 +1,46 @@
+// body
+$body-color: #000000;
+$body-bg: #ffffff;
+
+$font-size-base: 1.6rem;
+$line-height-base: 1.5;
+
+// colors
+$primary-color: #3498db;
+$secondary-color: #FFF400;
+$tertiary-color: #1D93E3;
+
+$color-hover: #ff5555;
+$color-required: #ff5555;
+
+// Fonts
+$font-family-base: 'Roboto Slab', sans-serif;
+
+// FontAwesome
+$font-awesome-free: 'Font Awesome 6 Free';
+$font-awesome-brand: 'Font Awesome 6 Brands';
+
+// Paragraphs
+//
+// Style p element.
+$paragraph-margin-bottom: 1.2rem;
+
+// headings variables
+$headings-margin-bottom: 1.2rem;
+$heading-color: #208B45;
+$headings-font-family: 'Roboto Slab', sans-serif;
+$headings-font-weight: 700;
+$headings-line-height: 1.25;
+
+$h1-font-size: 3.6rem;
+$h2-font-size: 3rem;
+$h3-font-size: 2.4rem;
+$h4-font-size: 2rem;
+$h5-font-size: 1.6rem;
+$h6-font-size: 1.4rem;
+
+// others
+$transition-base: all 0.4s ease-in-out;
+
+// Grid columns
+$grid-gutter-width: 2.4rem;

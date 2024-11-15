@@ -1,0 +1,58 @@
+.owl-carousel {
+  .owl-nav {
+    text-align: center;
+    margin-top: 15px;
+
+    button {
+      &.owl-prev,
+      &.owl-next {
+        margin: 0 6px;
+        color: $body-color;
+        font-size: 20px;
+        line-height: normal;
+        @include transition();
+
+        &:hover {
+          color: $color-hover;
+        }
+      }
+    }
+  }
+
+  .owl-dots {
+    margin-top: 30px;
+    @include flex-center;
+
+    .owl-dot {
+      display: inline-block;
+      margin: 0 5px;
+
+      span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #000000;
+        border-radius: 50%;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &.active,
+      &:hover {
+        span {
+          background-color: $color-hover;
+        }
+      }
+    }
+  }
+}
+
+.custom-equal-height-owl {
+  .owl-stage {
+    display: flex;
+
+    .owl-item {
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+}
