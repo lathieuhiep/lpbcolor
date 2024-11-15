@@ -3,7 +3,7 @@
 add_filter('use_widgets_block_editor', '__return_false');
 
 /* Better way to add multiple widgets areas */
-function basictheme_widget_registration($name, $id, $description = ''): void {
+function lpbcolor_widget_registration($name, $id, $description = ''): void {
 	register_sidebar( array(
 		'name' => $name,
 		'id' => $id,
@@ -15,15 +15,15 @@ function basictheme_widget_registration($name, $id, $description = ''): void {
 	));
 }
 
-function basictheme_multiple_widget_init(): void {
-	basictheme_widget_registration( esc_html__('Sidebar Main', 'basictheme'), 'sidebar-main' );
-	basictheme_widget_registration( esc_html__('Sidebar Shop', 'basictheme'), 'sidebar-wc', esc_html__('Display sidebar on page shop.', 'basictheme') );
-	basictheme_widget_registration( esc_html__('Sidebar Product', 'basictheme'), 'sidebar-wc-product', esc_html__('Display sidebar on page single product.', 'basictheme') );
+function lpbcolor_multiple_widget_init(): void {
+	lpbcolor_widget_registration( esc_html__('Sidebar Main', 'lpbcolor'), 'sidebar-main' );
+	lpbcolor_widget_registration( esc_html__('Sidebar Shop', 'lpbcolor'), 'sidebar-wc', esc_html__('Display sidebar on page shop.', 'lpbcolor') );
+	lpbcolor_widget_registration( esc_html__('Sidebar Product', 'lpbcolor'), 'sidebar-wc-product', esc_html__('Display sidebar on page single product.', 'lpbcolor') );
 
-	basictheme_widget_registration( esc_html__('Sidebar Footer Column 1', 'basictheme'), 'sidebar-footer-column-1' );
-	basictheme_widget_registration( esc_html__('Sidebar Footer Column 2', 'basictheme'), 'sidebar-footer-column-2' );
-	basictheme_widget_registration( esc_html__('Sidebar Footer Column 3', 'basictheme'), 'sidebar-footer-column-3' );
-	basictheme_widget_registration( esc_html__('Sidebar Footer Column 4', 'basictheme'), 'sidebar-footer-column-4' );
+	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 1', 'lpbcolor'), 'sidebar-footer-column-1' );
+	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 2', 'lpbcolor'), 'sidebar-footer-column-2' );
+	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 3', 'lpbcolor'), 'sidebar-footer-column-3' );
+	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 4', 'lpbcolor'), 'sidebar-footer-column-4' );
 }
 
-add_action('widgets_init', 'basictheme_multiple_widget_init');
+add_action('widgets_init', 'lpbcolor_multiple_widget_init');

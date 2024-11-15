@@ -29,10 +29,11 @@ Task build fontawesome
 * */
 function buildFontawesomeStyle() {
     return src(`${pathSrc}/scss/vendors/fontawesome.scss`)
-        .pipe(sass({
+        .pipe(sass.sync({
             outputStyle: 'expanded',
-            includePaths: ['node_modules']
-        }, '').on('error', sass.logError))
+            includePaths: ['node_modules'],
+            quiet: true
+        }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -63,10 +64,11 @@ Task build Bootstrap
 // Task build style bootstrap
 function buildStyleBootstrap() {
     return src(`${pathSrc}/scss/vendors/bootstrap.scss`)
-        .pipe(sass({
+        .pipe(sass.sync({
             outputStyle: 'expanded',
-            includePaths: ['node_modules']
-        }, '').on('error', sass.logError))
+            includePaths: ['node_modules'],
+            quiet: true
+        }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -74,6 +76,8 @@ function buildStyleBootstrap() {
         .pipe(dest(`${pathDist}/libs/bootstrap/`))
         .pipe(browserSync.stream())
 }
+
+exports.buildStyleBootstrap = buildStyleBootstrap
 
 // Task build js bootstrap
 function buildLibsBootstrapJS() {
@@ -114,9 +118,10 @@ function buildJsOwlCarouse() {
 function buildStyleTheme() {
     return src(`${pathSrc}/scss/style-theme.scss`)
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }, '').on('error', sass.logError))
+        .pipe(sass.sync({
+            outputStyle: 'expanded',
+            quiet: true
+        }).on('error', sass.logError))
         .pipe(dest(`${pathDist}/css/`))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
@@ -141,9 +146,10 @@ function buildJSTheme() {
 function buildStyleElementor() {
     return src(`${pathSrc}/scss/elementor-addons/addons.scss`)
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }, '').on('error', sass.logError))
+        .pipe(sass.sync({
+            outputStyle: 'expanded',
+            quiet: true
+        }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -167,9 +173,10 @@ function buildJSElementor() {
 function buildStyleCustomPostType() {
     return src(`${pathSrc}/scss/post-type/*/**.scss`)
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }, '').on('error', sass.logError))
+        .pipe(sass.sync({
+            outputStyle: 'expanded',
+            quiet: true
+        }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
@@ -183,9 +190,10 @@ function buildStyleCustomPostType() {
 function buildStylePageTemplate() {
     return src(`${pathSrc}/scss/page-templates/*.scss`)
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }, '').on('error', sass.logError))
+        .pipe(sass.sync({
+            outputStyle: 'expanded',
+            quiet: true
+        }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))

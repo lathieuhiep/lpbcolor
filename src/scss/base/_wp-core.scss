@@ -57,9 +57,9 @@ a {
 
 .wp-caption {
   background-color: #fff;
-  border: 1px solid #f0f0f0;
+  border: .1rem solid #f0f0f0;
   max-width: 96%;
-  padding: 5px 3px 10px;
+  padding: .5rem .3rem 1rem;
   text-align: center;
 
   &.alignnone {
@@ -85,8 +85,7 @@ a {
 
   p {
     &.wp-caption-text {
-      font-size: 11px;
-      line-height: 17px;
+      font-size: 1.1rem;
       margin: 0;
       padding: 0 4px 5px;
     }
@@ -95,11 +94,11 @@ a {
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(.1rem, .1rem, .1rem, .1rem);
   position: absolute !important;
   white-space: nowrap;
-  height: 1px;
-  width: 1px;
+  height: .1rem;
+  width: .1rem;
   overflow: hidden;
 
   &:focus {

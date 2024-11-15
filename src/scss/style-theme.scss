@@ -1,17 +1,9 @@
-/**
-* Table of Contents:
-*
-# Base
-# Layout
-# Components
-* -----------------------------------------------------------------------------
-*/
-
 @import "abstracts/abstracts";
 
 /**
 # Base
 -----------------------------------------------------------------------------*/
+@import "base/root";
 @import "base/general";
 @import "base/wp-core";
 

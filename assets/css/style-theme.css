@@ -1,14 +1,10 @@
 /**
-* Table of Contents:
-*
-# Base
-# Layout
-# Components
-* -----------------------------------------------------------------------------
-*/
-/**
 # Base
 -----------------------------------------------------------------------------*/
+:root {
+  --lp-bcolor-primary-color: #3498db;
+}
+
 * {
   outline: none !important;
 }
@@ -148,9 +144,9 @@ a img.aligncenter {
 
 .wp-caption {
   background-color: #fff;
-  border: 1px solid #f0f0f0;
+  border: 0.1rem solid #f0f0f0;
   max-width: 96%;
-  padding: 5px 3px 10px;
+  padding: 0.5rem 0.3rem 1rem;
   text-align: center;
 }
 .wp-caption img {
@@ -162,19 +158,18 @@ a img.aligncenter {
   width: auto;
 }
 .wp-caption p.wp-caption-text {
-  font-size: 11px;
-  line-height: 17px;
+  font-size: 1.1rem;
   margin: 0;
   padding: 0 4px 5px;
 }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
   position: absolute !important;
   white-space: nowrap;
-  height: 1px;
-  width: 1px;
+  height: 0.1rem;
+  width: 0.1rem;
   overflow: hidden;
 }
 .screen-reader-text:focus {

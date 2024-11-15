@@ -1,5 +1,5 @@
 <?php
-$show_related = basictheme_get_option('opt_post_single_related', '1');
+$show_related = lpbcolor_get_option('opt_post_single_related', '1');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">
@@ -13,13 +13,13 @@ $show_related = basictheme_get_option('opt_post_single_related', '1');
 		<?php the_title(); ?>
     </h2>
 
-	<?php basictheme_post_meta(); ?>
+	<?php lpbcolor_post_meta(); ?>
 
     <div class="single-post-content__detail">
 		<?php
 		the_content();
 
-		basictheme_link_page();
+		lpbcolor_link_page();
 		?>
     </div>
 
@@ -27,7 +27,7 @@ $show_related = basictheme_get_option('opt_post_single_related', '1');
 		<?php if( get_the_category() ): ?>
             <p class="post-category">
 				<?php
-				esc_html_e('Category: ','basictheme');
+				esc_html_e('Category: ','lpbcolor');
 				the_category( ', ' );
 				?>
             </p>
@@ -38,7 +38,7 @@ $show_related = basictheme_get_option('opt_post_single_related', '1');
         ?>
             <p class="post-tag">
 				<?php
-				esc_html_e( 'Tag: ','basictheme' );
+				esc_html_e( 'Tag: ','lpbcolor' );
 				the_tags('',', ');
 				?>
             </p>

@@ -7,37 +7,37 @@ function disable_gutenberg_editor()
 }
 
 // get version theme
-function basictheme_get_version_theme(): string {
+function lpbcolor_get_version_theme(): string {
 	return wp_get_theme()->get( 'Version' );
 }
 
 // check is blog
-function basictheme_is_blog (): bool {
+function lpbcolor_is_blog (): bool {
 	return ( is_archive() || is_category() || is_tag() || is_author() || is_home() );
 }
 
 // Callback Comment List
-function basictheme_comments( $basictheme_comment, $basictheme_comment_args, $basictheme_comment_depth ): void {
-	if ( $basictheme_comment_args['style'] == 'div' ) :
-		$basictheme_comment_tag       = 'div';
-		$basictheme_comment_add_below = 'comment';
+function lpbcolor_comments( $lpbcolor_comment, $lpbcolor_comment_args, $lpbcolor_comment_depth ): void {
+	if ( $lpbcolor_comment_args['style'] == 'div' ) :
+		$lpbcolor_comment_tag       = 'div';
+		$lpbcolor_comment_add_below = 'comment';
 	else :
-		$basictheme_comment_tag       = 'li';
-		$basictheme_comment_add_below = 'div-comment';
+		$lpbcolor_comment_tag       = 'li';
+		$lpbcolor_comment_add_below = 'div-comment';
 	endif;
 
 ?>
-	<<?php echo $basictheme_comment_tag ?> <?php comment_class( empty( $basictheme_comment_args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+	<<?php echo $lpbcolor_comment_tag ?> <?php comment_class( empty( $lpbcolor_comment_args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
 
-        <?php if ( 'div' != $basictheme_comment_args['style'] ) : ?>
+        <?php if ( 'div' != $lpbcolor_comment_args['style'] ) : ?>
 
 		<div id="div-comment-<?php comment_ID() ?>" class="comment__body">
 
         <?php endif; ?>
             <div class="author vcard">
                 <div class="author__avatar">
-	                <?php if ( $basictheme_comment_args['avatar_size'] != 0 ) {
-		                echo get_avatar( $basictheme_comment, $basictheme_comment_args['avatar_size'] );
+	                <?php if ( $lpbcolor_comment_args['avatar_size'] != 0 ) {
+		                echo get_avatar( $lpbcolor_comment, $lpbcolor_comment_args['avatar_size'] );
 	                } ?>
                 </div>
 
@@ -48,9 +48,9 @@ function basictheme_comments( $basictheme_comment, $basictheme_comment_args, $ba
                 </div>
             </div>
 
-            <?php if ( $basictheme_comment->comment_approved == '0' ) : ?>
+            <?php if ( $lpbcolor_comment->comment_approved == '0' ) : ?>
                 <div class="awaiting">
-                    <?php esc_html_e( 'Your comment is awaiting moderation.', 'basictheme' ); ?>
+                    <?php esc_html_e( 'Your comment is awaiting moderation.', 'lpbcolor' ); ?>
                 </div>
             <?php endif; ?>
 
@@ -59,16 +59,16 @@ function basictheme_comments( $basictheme_comment, $basictheme_comment_args, $ba
             </div>
 
             <div class="action">
-	            <?php edit_comment_link( esc_html__( 'Edit ', 'basictheme' ) ); ?>
+	            <?php edit_comment_link( esc_html__( 'Edit ', 'lpbcolor' ) ); ?>
 
-	            <?php comment_reply_link( array_merge( $basictheme_comment_args, array(
-		            'add_below' => $basictheme_comment_add_below,
-		            'depth'     => $basictheme_comment_depth,
-		            'max_depth' => $basictheme_comment_args['max_depth']
+	            <?php comment_reply_link( array_merge( $lpbcolor_comment_args, array(
+		            'add_below' => $lpbcolor_comment_add_below,
+		            'depth'     => $lpbcolor_comment_depth,
+		            'max_depth' => $lpbcolor_comment_args['max_depth']
 	            ) ) ); ?>
             </div>
 
-	    <?php if ( $basictheme_comment_args['style'] != 'div' ) : ?>
+	    <?php if ( $lpbcolor_comment_args['style'] != 'div' ) : ?>
 
 		</div>
 
@@ -77,21 +77,21 @@ function basictheme_comments( $basictheme_comment, $basictheme_comment_args, $ba
 }
 
 // Content Nav
-function basictheme_comment_nav(): void {
+function lpbcolor_comment_nav(): void {
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
 	<nav class="navigation comment-navigation">
 		<h2 class="screen-reader-text">
-			<?php esc_html_e( 'Comment navigation', 'basictheme' ); ?>
+			<?php esc_html_e( 'Comment navigation', 'lpbcolor' ); ?>
 		</h2>
 
 		<div class="nav-links">
 			<?php
-			if ( $prev_link = get_previous_comments_link( esc_html__( 'Older Comments', 'basictheme' ) ) ) :
+			if ( $prev_link = get_previous_comments_link( esc_html__( 'Older Comments', 'lpbcolor' ) ) ) :
 				printf( '<div class="nav-previous">%s</div>', $prev_link );
 			endif;
 
-			if ( $next_link = get_next_comments_link( esc_html__( 'Newer Comments', 'basictheme' ) ) ) :
+			if ( $next_link = get_next_comments_link( esc_html__( 'Newer Comments', 'lpbcolor' ) ) ) :
 				printf( '<div class="nav-next">%s</div>', $next_link );
 			endif;
 			?>
@@ -102,22 +102,22 @@ function basictheme_comment_nav(): void {
 }
 
 // Pagination
-function basictheme_pagination(): void {
+function lpbcolor_pagination(): void {
 	the_posts_pagination( array(
 		'type'               => 'list',
 		'mid_size'           => 2,
-		'prev_text'          => esc_html__( 'Previous', 'basictheme' ),
-		'next_text'          => esc_html__( 'Next', 'basictheme' ),
+		'prev_text'          => esc_html__( 'Previous', 'lpbcolor' ),
+		'next_text'          => esc_html__( 'Next', 'lpbcolor' ),
 		'screen_reader_text' => '&nbsp;',
 	) );
 }
 
 // Pagination Nav Query
-function basictheme_paging_nav_query( $query ): void {
+function lpbcolor_paging_nav_query( $query ): void {
 
 	$args = array(
-		'prev_text' => esc_html__( ' Previous', 'basictheme' ),
-		'next_text' => esc_html__( 'Next', 'basictheme' ),
+		'prev_text' => esc_html__( ' Previous', 'lpbcolor' ),
+		'next_text' => esc_html__( 'Next', 'lpbcolor' ),
 		'current'   => max( 1, get_query_var( 'paged' ) ),
 		'total'     => $query->max_num_pages,
 		'type'      => 'list',
@@ -138,7 +138,7 @@ function basictheme_paging_nav_query( $query ): void {
 }
 
 // Get col global
-function basictheme_col_use_sidebar( $option_sidebar, $active_sidebar ): string
+function lpbcolor_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 {
 	if ( $option_sidebar != 'hide' && is_active_sidebar( $active_sidebar ) ):
 
@@ -156,18 +156,18 @@ function basictheme_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 	return $class_col_content;
 }
 
-function basictheme_col_sidebar(): string
+function lpbcolor_col_sidebar(): string
 {
 	return 'col-12 col-md-4 col-lg-3';
 }
 
 // Post Meta
-function basictheme_post_meta(): void {
+function lpbcolor_post_meta(): void {
 	?>
 
 	<div class="post-meta">
         <span class="post-meta__author">
-            <?php esc_html_e( 'Author:', 'basictheme' ); ?>
+            <?php esc_html_e( 'Author:', 'lpbcolor' ); ?>
 
             <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
                 <?php the_author(); ?>
@@ -175,13 +175,13 @@ function basictheme_post_meta(): void {
         </span>
 
 		<span class="post-meta__date">
-            <?php esc_html_e( 'Post date: ', 'basictheme' );
+            <?php esc_html_e( 'Post date: ', 'lpbcolor' );
             the_date(); ?>
         </span>
 
 		<span class="post-meta__comments">
             <?php
-            comments_popup_link( '0 ' . esc_html__( 'Comment', 'basictheme' ), '1 ' . esc_html__( 'Comment', 'basictheme' ), '% ' . esc_html__( 'Comments', 'basictheme' ) );
+            comments_popup_link( '0 ' . esc_html__( 'Comment', 'lpbcolor' ), '1 ' . esc_html__( 'Comment', 'lpbcolor' ), '% ' . esc_html__( 'Comments', 'lpbcolor' ) );
             ?>
         </span>
 	</div>
@@ -190,10 +190,10 @@ function basictheme_post_meta(): void {
 }
 
 // Link Pages
-function basictheme_link_page(): void {
+function lpbcolor_link_page(): void {
 
 	wp_link_pages( array(
-		'before'      => '<div class="page-links">' . esc_html__( 'Pages:', 'basictheme' ),
+		'before'      => '<div class="page-links">' . esc_html__( 'Pages:', 'lpbcolor' ),
 		'after'       => '</div>',
 		'link_before' => '<span class="page-number">',
 		'link_after'  => '</span>',
@@ -202,7 +202,7 @@ function basictheme_link_page(): void {
 }
 
 // Get Category Check Box
-function basictheme_check_get_cat( $type_taxonomy ): array
+function lpbcolor_check_get_cat( $type_taxonomy ): array
 {
 	$cat_check = array();
 	$category  = get_terms(
@@ -222,7 +222,7 @@ function basictheme_check_get_cat( $type_taxonomy ): array
 }
 
 // Get Contact Form 7
-function basictheme_get_form_cf7(): array {
+function lpbcolor_get_form_cf7(): array {
 	$options = array();
 
 	if ( function_exists('wpcf7') ) {
@@ -232,14 +232,14 @@ function basictheme_get_form_cf7(): array {
 			'numberposts' => -1,
 		) );
 
-		$options[0] = esc_html__('Select a Contact Form', 'basictheme');
+		$options[0] = esc_html__('Select a Contact Form', 'lpbcolor');
 
 		if ( !empty($wpcf7_form_list) && !is_wp_error($wpcf7_form_list) ) :
 			foreach ( $wpcf7_form_list as $item ) :
 				$options[$item->ID] = $item->post_title;
 			endforeach;
 		else :
-			$options[0] = esc_html__('Create a Form First', 'basictheme');
+			$options[0] = esc_html__('Create a Form First', 'lpbcolor');
 		endif;
 
 	}
@@ -248,8 +248,8 @@ function basictheme_get_form_cf7(): array {
 }
 
 // Social Network
-function basictheme_get_social_url(): void {
-	$opt_social_networks = basictheme_get_option('opt_social_network', '');
+function lpbcolor_get_social_url(): void {
+	$opt_social_networks = lpbcolor_get_option('opt_social_network', '');
 
     if ( !empty( $opt_social_networks ) ) :
 	    foreach ( $opt_social_networks as $item ) :

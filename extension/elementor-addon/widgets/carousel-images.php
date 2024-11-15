@@ -7,18 +7,18 @@ use Elementor\Controls_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
+class lpbcolor_Elementor_Carousel_Images extends Widget_Base {
 
 	public function get_categories(): array {
 		return array( 'my-theme' );
 	}
 
 	public function get_name(): string {
-		return 'basictheme-carousel-images';
+		return 'lpbcolor-carousel-images';
 	}
 
 	public function get_title(): string {
-		return esc_html__( 'Carousel Images', 'basictheme' );
+		return esc_html__( 'Carousel Images', 'lpbcolor' );
 	}
 
 	public function get_icon(): string {
@@ -35,7 +35,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->start_controls_section(
 			'section_carousel_images',
 			[
-				'label' => __( 'Carousel Images', 'basictheme' ),
+				'label' => __( 'Carousel Images', 'lpbcolor' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -44,9 +44,9 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 
 		$repeater->add_control(
 			'list_title', [
-				'label' => esc_html__( 'Name', 'basictheme' ),
+				'label' => esc_html__( 'Name', 'lpbcolor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Title #1' , 'basictheme' ),
+				'default' => esc_html__( 'Title #1' , 'lpbcolor' ),
 				'label_block' => true,
 			]
 		);
@@ -54,7 +54,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$repeater->add_control(
 			'list_image',
 			[
-				'label' => esc_html__( 'Choose Image', 'basictheme' ),
+				'label' => esc_html__( 'Choose Image', 'lpbcolor' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -65,9 +65,9 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$repeater->add_control(
 			'list_link',
 			[
-				'label' => esc_html__( 'Link', 'basictheme' ),
+				'label' => esc_html__( 'Link', 'lpbcolor' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'basictheme' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'lpbcolor' ),
 				'default' => [
 					'url' => '',
 					'is_external' => true,
@@ -80,21 +80,21 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'List', 'basictheme' ),
+				'label' => esc_html__( 'List', 'lpbcolor' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'list_title' => __( 'Title #1', 'basictheme' ),
+						'list_title' => __( 'Title #1', 'lpbcolor' ),
 					],
 					[
-						'list_title' => __( 'Title #2', 'basictheme' ),
+						'list_title' => __( 'Title #2', 'lpbcolor' ),
 					],
                     [
-                        'list_title' => __( 'Title #3', 'basictheme' ),
+                        'list_title' => __( 'Title #3', 'lpbcolor' ),
                     ],
                     [
-                        'list_title' => __( 'Title #4', 'basictheme' ),
+                        'list_title' => __( 'Title #4', 'lpbcolor' ),
                     ],
 				],
 				'title_field' => '{{{ list_title }}}',
@@ -107,7 +107,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->start_controls_section(
 			'content_additional_options',
 			[
-				'label' => __( 'Options', 'basictheme' ),
+				'label' => __( 'Options', 'lpbcolor' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -116,9 +116,9 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 			'loop',
 			[
 				'type'          =>  Controls_Manager::SWITCHER,
-				'label'         =>  esc_html__('Loop Slider ?', 'basictheme'),
-				'label_off'     =>  esc_html__('No', 'basictheme'),
-				'label_on'      =>  esc_html__('Yes', 'basictheme'),
+				'label'         =>  esc_html__('Loop Slider ?', 'lpbcolor'),
+				'label_off'     =>  esc_html__('No', 'lpbcolor'),
+				'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
 				'return_value'  =>  'yes',
 				'default'       =>  'yes',
 			]
@@ -127,10 +127,10 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'autoplay',
 			[
-				'label'         =>  esc_html__('Autoplay?', 'basictheme'),
+				'label'         =>  esc_html__('Autoplay?', 'lpbcolor'),
 				'type'          =>  Controls_Manager::SWITCHER,
-				'label_off'     =>  esc_html__('No', 'basictheme'),
-				'label_on'      =>  esc_html__('Yes', 'basictheme'),
+				'label_off'     =>  esc_html__('No', 'lpbcolor'),
+				'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
 				'return_value'  =>  'yes',
 				'default'       =>  'no',
 			]
@@ -139,10 +139,10 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'nav',
 			[
-				'label'         =>  esc_html__('Nav Slider', 'basictheme'),
+				'label'         =>  esc_html__('Nav Slider', 'lpbcolor'),
 				'type'          =>  Controls_Manager::SWITCHER,
-				'label_on'      =>  esc_html__('Yes', 'basictheme'),
-				'label_off'     =>  esc_html__('No', 'basictheme'),
+				'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
+				'label_off'     =>  esc_html__('No', 'lpbcolor'),
 				'return_value'  =>  'yes',
 				'default'       =>  'yes',
 			]
@@ -151,10 +151,10 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'dots',
 			[
-				'label'         =>  esc_html__('Dots Slider', 'basictheme'),
+				'label'         =>  esc_html__('Dots Slider', 'lpbcolor'),
 				'type'          =>  Controls_Manager::SWITCHER,
-				'label_on'      =>  esc_html__('Yes', 'basictheme'),
-				'label_off'     =>  esc_html__('No', 'basictheme'),
+				'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
+				'label_off'     =>  esc_html__('No', 'lpbcolor'),
 				'return_value'  =>  'yes',
 				'default'       =>  'yes',
 			]
@@ -166,7 +166,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->start_controls_section(
 			'content_additional_options',
 			[
-				'label' => esc_html__( 'Additional Options', 'basictheme' ),
+				'label' => esc_html__( 'Additional Options', 'lpbcolor' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -175,9 +175,9 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 			'loop',
 			[
 				'type'         => Controls_Manager::SWITCHER,
-				'label'        => esc_html__( 'Loop Slider ?', 'basictheme' ),
-				'label_off'    => esc_html__( 'No', 'basictheme' ),
-				'label_on'     => esc_html__( 'Yes', 'basictheme' ),
+				'label'        => esc_html__( 'Loop Slider ?', 'lpbcolor' ),
+				'label_off'    => esc_html__( 'No', 'lpbcolor' ),
+				'label_on'     => esc_html__( 'Yes', 'lpbcolor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -186,10 +186,10 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'autoplay',
 			[
-				'label'        => esc_html__( 'Autoplay?', 'basictheme' ),
+				'label'        => esc_html__( 'Autoplay?', 'lpbcolor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_off'    => esc_html__( 'No', 'basictheme' ),
-				'label_on'     => esc_html__( 'Yes', 'basictheme' ),
+				'label_off'    => esc_html__( 'No', 'lpbcolor' ),
+				'label_on'     => esc_html__( 'Yes', 'lpbcolor' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 			]
@@ -198,10 +198,10 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'nav',
 			[
-				'label'        => esc_html__( 'Nav Slider', 'basictheme' ),
+				'label'        => esc_html__( 'Nav Slider', 'lpbcolor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'basictheme' ),
-				'label_off'    => esc_html__( 'No', 'basictheme' ),
+				'label_on'     => esc_html__( 'Yes', 'lpbcolor' ),
+				'label_off'    => esc_html__( 'No', 'lpbcolor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -210,10 +210,10 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'dots',
 			[
-				'label'        => esc_html__( 'Dots Slider', 'basictheme' ),
+				'label'        => esc_html__( 'Dots Slider', 'lpbcolor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'basictheme' ),
-				'label_off'    => esc_html__( 'No', 'basictheme' ),
+				'label_on'     => esc_html__( 'Yes', 'lpbcolor' ),
+				'label_off'    => esc_html__( 'No', 'lpbcolor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			]
@@ -222,7 +222,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'margin_item',
 			[
-				'label'   => esc_html__( 'Space Between Item', 'basictheme' ),
+				'label'   => esc_html__( 'Space Between Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 20,
 				'min'     => 0,
@@ -234,7 +234,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'min_width_1200',
 			[
-				'label'     => esc_html__( 'Min Width 1200px', 'basictheme' ),
+				'label'     => esc_html__( 'Min Width 1200px', 'lpbcolor' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -243,7 +243,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'item',
 			[
-				'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+				'label'   => esc_html__( 'Number of Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 4,
 				'min'     => 1,
@@ -255,7 +255,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'min_width_992',
 			[
-				'label'     => esc_html__( 'Min Width 992px', 'basictheme' ),
+				'label'     => esc_html__( 'Min Width 992px', 'lpbcolor' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -264,7 +264,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'item_992',
 			[
-				'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+				'label'   => esc_html__( 'Number of Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 2,
 				'min'     => 1,
@@ -276,7 +276,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'min_width_768',
 			[
-				'label'     => esc_html__( 'Min Width 768px', 'basictheme' ),
+				'label'     => esc_html__( 'Min Width 768px', 'lpbcolor' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -285,7 +285,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'item_768',
 			[
-				'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+				'label'   => esc_html__( 'Number of Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 2,
 				'min'     => 1,
@@ -297,7 +297,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'min_width_568',
 			[
-				'label'     => esc_html__( 'Min Width 568px', 'basictheme' ),
+				'label'     => esc_html__( 'Min Width 568px', 'lpbcolor' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -306,7 +306,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'item_568',
 			[
-				'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+				'label'   => esc_html__( 'Number of Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 2,
 				'min'     => 1,
@@ -318,7 +318,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'margin_item_568',
 			[
-				'label'   => esc_html__( 'Space Between Item', 'basictheme' ),
+				'label'   => esc_html__( 'Space Between Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 15,
 				'min'     => 0,
@@ -330,7 +330,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'max_width_567',
 			[
-				'label'     => esc_html__( 'Max Width 567px', 'basictheme' ),
+				'label'     => esc_html__( 'Max Width 567px', 'lpbcolor' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -339,7 +339,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'item_567',
 			[
-				'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+				'label'   => esc_html__( 'Number of Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 1,
 				'min'     => 1,
@@ -351,7 +351,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'margin_item_567',
 			[
-				'label'   => esc_html__( 'Space Between Item', 'basictheme' ),
+				'label'   => esc_html__( 'Space Between Item', 'lpbcolor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 0,
 				'min'     => 0,
@@ -366,7 +366,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->start_controls_section(
 			'section_style',
 			[
-				'label' => __( 'Style', 'basictheme' ),
+				'label' => __( 'Style', 'lpbcolor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -374,7 +374,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'dots_color',
 			[
-				'label' => esc_html__( 'Dots Color', 'basictheme' ),
+				'label' => esc_html__( 'Dots Color', 'lpbcolor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .element-carousel-images .owl-carousel .owl-dots .owl-dot span' => 'background-color: {{VALUE}};',
@@ -393,7 +393,7 @@ class BasicTheme_Elementor_Carousel_Images extends Widget_Base {
 		$this->add_control(
 			'dots_color_hover',
 			[
-				'label' => esc_html__( 'Dots Color Hover', 'basictheme' ),
+				'label' => esc_html__( 'Dots Color Hover', 'lpbcolor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .element-carousel-images .owl-carousel .owl-dots .owl-dot.active span, {{WRAPPER}} .element-carousel-images .owl-carousel .owl-dots .owl-dot:hover span' => 'background-color: {{VALUE}};',

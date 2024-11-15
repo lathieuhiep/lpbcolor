@@ -7,15 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class basictheme_social_widget extends WP_Widget {
+class lpbcolor_social_widget extends WP_Widget {
 	/* Widget setup */
     public function __construct() {
-        $basictheme_social_widget_ops = array(
+        $lpbcolor_social_widget_ops = array(
             'classname'     =>  'social-widget',
-            'description'   =>  esc_html__( 'A widget that displays your social icons', 'basictheme' ),
+            'description'   =>  esc_html__( 'A widget that displays your social icons', 'lpbcolor' ),
         );
 
-        parent::__construct( 'social-widget', 'My Theme: Social Icons', $basictheme_social_widget_ops );
+        parent::__construct( 'social-widget', 'My Theme: Social Icons', $lpbcolor_social_widget_ops );
     }
 
     /**
@@ -32,7 +32,7 @@ class basictheme_social_widget extends WP_Widget {
         }
     ?>
         <div class="social-widget">
-            <?php basictheme_get_social_url(); ?>
+            <?php lpbcolor_get_social_url(); ?>
         </div>
     <?php
 
@@ -46,7 +46,7 @@ class basictheme_social_widget extends WP_Widget {
      */
 	function form( $instance ) {
 		$defaults = array(
-            'title' => esc_html__('Subscribe & Follow', 'basictheme')
+            'title' => esc_html__('Subscribe & Follow', 'lpbcolor')
         );
 
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
@@ -54,14 +54,14 @@ class basictheme_social_widget extends WP_Widget {
 		<!-- Widget Title: Text Input -->
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
-                <?php esc_html_e( 'Title:', 'basictheme' ); ?>
+                <?php esc_html_e( 'Title:', 'lpbcolor' ); ?>
             </label>
 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 		</p>
 		
 		<p>
-            <?php esc_html_e( 'Note: Set your social links in the basictheme Options', 'basictheme' ); ?>
+            <?php esc_html_e( 'Note: Set your social links in the lpbcolor Options', 'lpbcolor' ); ?>
         </p>
 	<?php
 
@@ -85,8 +85,8 @@ class basictheme_social_widget extends WP_Widget {
 }
 
 // Register social widget
-function basictheme_social_widget_register(): void {
-    register_widget( 'basictheme_social_widget' );
+function lpbcolor_social_widget_register(): void {
+    register_widget( 'lpbcolor_social_widget' );
 }
 
-add_action( 'widgets_init', 'basictheme_social_widget_register' );
+add_action( 'widgets_init', 'lpbcolor_social_widget_register' );
