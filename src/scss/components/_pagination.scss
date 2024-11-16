@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 .pagination {
   display: block;
   float: none;
@@ -27,8 +29,8 @@
 
     span.current,
     a:hover {
-      background: $color-hover;
-      border-color: $color-hover;
+      background: var(--#{$prefix-my-theme}hover-color);
+      border-color: var(--#{$prefix-my-theme}hover-color);
       color: #ffffff;
     }
   }

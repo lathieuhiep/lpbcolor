@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 .global-header {
   background-color: #ffffff;
   box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.3);
@@ -38,7 +40,7 @@
 
           &:hover {
             background-color: transparent;
-            color: $color-hover;
+            color: var(--#{$prefix-my-theme}hover-color);
           }
         }
 
@@ -57,7 +59,7 @@
         &.current-menu-item,
         &.current-menu-parent {
           > a {
-            color: $color-hover;
+            color: var(--#{$prefix-my-theme}hover-color);
           }
         }
       }
@@ -130,8 +132,8 @@
           .sub-menu {
             display: block !important;
             min-width: 160px;
-            border-top: 1px solid $color-hover;
-            background-color: $primary-color;
+            border-top: 1px solid var(--#{$prefix-my-theme}hover-color);
+            background-color: var(--#{$prefix-my-theme}primary-color);
             position: absolute;
             top: 120%;
             left: 0;
@@ -283,7 +285,7 @@
         right: 0;
         @include square(20px, 50%);
         @include flex-center();
-        background-color: $color-hover;
+        background-color: var(--#{$prefix-my-theme}hover-color);
       }
     }
 
@@ -326,13 +328,13 @@
                 width: auto;
                 height: auto;
                 font-size: 35px;
-                color: $body-color !important;
+                color: var(--#{$prefix-my-theme}body-color) !important;
                 line-height: inherit;
                 background-color: transparent;
                 @include flex-center;
 
                 &:hover {
-                  color: $color-hover !important;
+                  color: var(--#{$prefix-my-theme}hover-color) !important;
                 }
               }
 

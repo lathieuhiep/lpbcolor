@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 %margin-alignnone {
   margin: .5rem 2rem 2rem 0;
 }
@@ -104,7 +106,7 @@ a {
   &:focus {
     background-color: #f1f1f1;
     clip: auto !important;
-    color: $color-hover;
+    color: var(--#{$prefix-my-theme}hover-color);
     display: block;
     height: auto;
     left: 5px;
@@ -121,7 +123,7 @@ a {
 
 .bypostauthor,
 .sticky {
-  color: $color-hover;
+  color: var(--#{$prefix-my-theme}hover-color);
 }
 
 form {

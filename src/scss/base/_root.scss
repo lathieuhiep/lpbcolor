@@ -1,3 +1,16 @@
+@use "../abstracts/abstracts" as *;
+
 :root {
+  --#{$prefix-my-theme}body-color: #{$body-color};
+  --#{$prefix-my-theme}body-font-size: #{$font-size-base};
+  --#{$prefix-my-theme}body-font-family: #{$font-family-base};
+
+  --#{$prefix-my-theme}heading-color: #{$heading-color};
+
   --#{$prefix-my-theme}primary-color: #{$primary-color};
+  --#{$prefix-my-theme}secondary-color: #{$secondary-color};
+  --#{$prefix-my-theme}tertiary-color: #{$tertiary-color};
+
+  --#{$prefix-my-theme}hover-color: #{$hover-color};
+  --#{$prefix-my-theme}required-color: #{$required-color};
 }

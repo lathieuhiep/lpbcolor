@@ -2,22 +2,22 @@
 $prefix-my-theme: 'lp-bcolor-';
 
 // body
-$body-color: #000000;
+$body-color: #292D4D;
 $body-bg: #ffffff;
 
-$font-size-base: 1.6rem;
+$font-size-base: 1.4rem;
 $line-height-base: 1.5;
 
 // colors
-$primary-color: #3498db;
-$secondary-color: #FFF400;
-$tertiary-color: #1D93E3;
+$primary-color: #292D4D;
+$secondary-color: #FFD600;
+$tertiary-color: #00A77F;
 
-$color-hover: #ff5555;
-$color-required: #ff5555;
+$hover-color: #FFD600;
+$required-color: #ff5555;
 
 // Fonts
-$font-family-base: 'Roboto Slab', sans-serif;
+$font-family-base: 'Inter', sans-serif;
 
 // FontAwesome
 $font-awesome-free: 'Font Awesome 6 Free';
@@ -30,8 +30,8 @@ $paragraph-margin-bottom: 1.2rem;
 
 // headings variables
 $headings-margin-bottom: 1.2rem;
-$heading-color: #208B45;
-$headings-font-family: 'Roboto Slab', sans-serif;
+$heading-color: #292D4D;
+$headings-font-family: 'Inter', sans-serif;
 $headings-font-weight: 700;
 $headings-line-height: 1.25;
 

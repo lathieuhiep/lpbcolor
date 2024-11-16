@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 .element-post-carousel {
   .item-post {
     @include flex-column;
@@ -5,7 +7,7 @@
 
     &__content {
       padding: 15px;
-      border: 1px solid $primary-color;
+      border: 1px solid var(--#{$prefix-my-theme}primary-color);
 
       .title {
         font-size: 1.5rem;

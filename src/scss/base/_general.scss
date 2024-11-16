@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 * {
   outline: none !important;
 }
@@ -38,8 +40,8 @@ iframe {
 }
 
 blockquote {
-  border-left: 1px solid $color-hover;
-  padding-left: 30px;
+  border-left: 1px solid var(--#{$prefix-my-theme}hover-color);
+  padding-left: 3rem;
 }
 
 pre {
@@ -62,7 +64,7 @@ pre {
 }
 
 #back-top {
-  background-color: $color-hover;
+  background-color: var(--#{$prefix-my-theme}hover-color);
   opacity: 0;
   width: 40px;
   height: 40px;

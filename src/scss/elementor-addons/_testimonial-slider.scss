@@ -1,19 +1,21 @@
+@use "../abstracts/abstracts" as *;
+
 .element-testimonial-slider {
   .item {
     &__image {
-      width: 150px;
-      margin: 0 auto 12px;
+      width: 15rem;
+      margin: 0 auto 1.2rem;
     }
 
     &__content {
       > div {
         &:not(:last-child) {
-          margin-bottom: 12px;
+          margin-bottom: 1.2rem;
         }
       }
 
       .name {
-        font-size: 18px;
+        font-size: 1.8rem;
         font-weight: 700;
       }
     }

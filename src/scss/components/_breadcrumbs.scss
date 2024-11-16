@@ -1,6 +1,8 @@
+@use "../abstracts/abstracts" as *;
+
 .breadcrumbs {
   .breadcrumbs-col {
     padding: 15px 0;
-    border-bottom: 1px solid $primary-color;
+    border-bottom: 1px solid var(--#{$prefix-my-theme}primary-color);
   }
 }

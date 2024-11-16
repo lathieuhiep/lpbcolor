@@ -1,25 +1,23 @@
-@import "abstracts/abstracts";
-
 /**
 # Base
 -----------------------------------------------------------------------------*/
-@import "base/root";
-@import "base/general";
-@import "base/wp-core";
+@use "base/root";
+@use "base/general";
+@use "base/wp-core";
 
 /**
 # Layout
 -----------------------------------------------------------------------------*/
-@import "layout/header";
-@import "layout/sidebar";
-@import "layout/footer";
+@use "layout/header";
+@use "layout/sidebar";
+@use "layout/footer";
 
 /**
 # Components
 -----------------------------------------------------------------------------*/
-@import "components/breadcrumbs";
-@import "components/cf7";
-@import "components/comment-form";
-@import "components/pagination";
-@import "components/owl-carousel";
-@import "components/social-network";
+@use "components/breadcrumbs";
+@use "components/cf7";
+@use "components/comment-form";
+@use "components/pagination";
+@use "components/owl-carousel";
+@use "components/social-network";

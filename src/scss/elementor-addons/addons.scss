@@ -1,7 +1,5 @@
-@import "../abstracts/abstracts";
-
-@import "slides";
-@import "post-grid";
-@import "post-carousel";
-@import "testimonial-slider";
-@import "info-box";
+@use "slides";
+@use "post-grid";
+@use "post-carousel";
+@use "testimonial-slider";
+@use "info-box";

@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 form {
   &.wpcf7-form {
     p {
@@ -20,7 +22,7 @@ form {
 
     span {
       &.required {
-        color: $color-hover;
+        color: var(--#{$prefix-my-theme}hover-color);
       }
 
       &.wpcf7-form-control-wrap {

@@ -1,4 +1,4 @@
-@import "../../abstracts/abstracts";
+@use "../../abstracts/abstracts" as *;
 
 .single-post-content {
   &__image,
@@ -37,7 +37,7 @@
       bottom: 0;
       width: 30px;
       height: 1px;
-      background-color: $color-hover;
+      background-color: var(--#{$prefix-my-theme}hover-color);
     }
   }
 

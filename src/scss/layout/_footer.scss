@@ -1,3 +1,5 @@
+@use "../abstracts/abstracts" as *;
+
 .global-footer {
   section {
     &.widget {
@@ -6,13 +8,13 @@
   }
 
   &__column {
-    border-top: 1px solid $primary-color;
+    border-top: 1px solid var(--#{$prefix-my-theme}primary-color);
     padding: 30px 0;
   }
 
   &__bottom {
     padding: 10px 0;
     color: #ffffff;
-    background-color: $body-color;
+    background-color: var(--#{$prefix-my-theme}body-color);
   }
 }

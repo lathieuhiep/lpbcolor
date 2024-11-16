@@ -31,8 +31,7 @@ function buildFontawesomeStyle() {
     return src(`${pathSrc}/scss/vendors/fontawesome.scss`)
         .pipe(sass.sync({
             outputStyle: 'expanded',
-            includePaths: ['node_modules'],
-            quiet: true
+            includePaths: ['node_modules']
         }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
@@ -66,8 +65,7 @@ function buildStyleBootstrap() {
     return src(`${pathSrc}/scss/vendors/bootstrap.scss`)
         .pipe(sass.sync({
             outputStyle: 'expanded',
-            includePaths: ['node_modules'],
-            quiet: true
+            includePaths: ['node_modules']
         }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
@@ -119,8 +117,7 @@ function buildStyleTheme() {
     return src(`${pathSrc}/scss/style-theme.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
-            outputStyle: 'expanded',
-            quiet: true
+            outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(dest(`${pathDist}/css/`))
         .pipe(minifyCss({
@@ -147,8 +144,7 @@ function buildStyleElementor() {
     return src(`${pathSrc}/scss/elementor-addons/addons.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
-            outputStyle: 'expanded',
-            quiet: true
+            outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
@@ -174,8 +170,7 @@ function buildStyleCustomPostType() {
     return src(`${pathSrc}/scss/post-type/*/**.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
-            outputStyle: 'expanded',
-            quiet: true
+            outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
@@ -191,8 +186,7 @@ function buildStylePageTemplate() {
     return src(`${pathSrc}/scss/page-templates/*.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
-            outputStyle: 'expanded',
-            quiet: true
+            outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
@@ -256,7 +250,7 @@ function watchTask() {
     watch([`${pathSrc}/js/custom.js`], buildJSTheme)
 
     watch([
-        `${pathSrc}/scss/elementor-addon/*.scss`
+        `${pathSrc}/scss/elementor-addons/*.scss`
     ], buildStyleElementor)
     watch([`${pathSrc}/js/elementor-addon.js`], buildJSElementor)
 

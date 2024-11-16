@@ -2,7 +2,15 @@
 # Base
 -----------------------------------------------------------------------------*/
 :root {
-  --lp-bcolor-primary-color: #3498db;
+  --lp-bcolor-body-color: #292D4D;
+  --lp-bcolor-body-font-size: 1.4rem;
+  --lp-bcolor-body-font-family: Inter, sans-serif;
+  --lp-bcolor-heading-color: #292D4D;
+  --lp-bcolor-primary-color: #292D4D;
+  --lp-bcolor-secondary-color: #FFD600;
+  --lp-bcolor-tertiary-color: #00A77F;
+  --lp-bcolor-hover-color: #FFD600;
+  --lp-bcolor-required-color: #ff5555;
 }
 
 * {
@@ -44,8 +52,8 @@ iframe {
 }
 
 blockquote {
-  border-left: 1px solid #ff5555;
-  padding-left: 30px;
+  border-left: 1px solid var(--lp-bcolor-hover-color);
+  padding-left: 3rem;
 }
 
 pre {
@@ -68,7 +76,7 @@ pre {
 }
 
 #back-top {
-  background-color: #ff5555;
+  background-color: var(--lp-bcolor-hover-color);
   opacity: 0;
   width: 40px;
   height: 40px;
@@ -175,7 +183,7 @@ a img.aligncenter {
 .screen-reader-text:focus {
   background-color: #f1f1f1;
   clip: auto !important;
-  color: #ff5555;
+  color: var(--lp-bcolor-hover-color);
   display: block;
   height: auto;
   left: 5px;
@@ -191,7 +199,7 @@ a img.aligncenter {
 
 .bypostauthor,
 .sticky {
-  color: #ff5555;
+  color: var(--lp-bcolor-hover-color);
 }
 
 form.post-password-form p label {
@@ -396,7 +404,7 @@ form.post-password-form p input[type=submit] {
 }
 .site-navigation__menu ul li a:hover {
   background-color: transparent;
-  color: #ff5555;
+  color: var(--lp-bcolor-hover-color);
 }
 .site-navigation__menu ul li:last-child a {
   padding-right: 0;
@@ -405,7 +413,7 @@ form.post-password-form p input[type=submit] {
   transition: all 0.4s ease-in-out;
 }
 .site-navigation__menu ul li.current-menu-item > a, .site-navigation__menu ul li.current-menu-parent > a {
-  color: #ff5555;
+  color: var(--lp-bcolor-hover-color);
 }
 .site-navigation__menu .sub-menu-toggle {
   font-size: 14px;
@@ -449,8 +457,8 @@ form.post-password-form p input[type=submit] {
   .site-navigation__menu ul li .sub-menu {
     display: block !important;
     min-width: 160px;
-    border-top: 1px solid #ff5555;
-    background-color: #3498db;
+    border-top: 1px solid var(--lp-bcolor-hover-color);
+    background-color: var(--lp-bcolor-primary-color);
     position: absolute;
     top: 120%;
     left: 0;
@@ -573,7 +581,7 @@ form.post-password-form p input[type=submit] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff5555;
+  background-color: var(--lp-bcolor-hover-color);
 }
 .site-navigation__cart .widget_shopping_cart {
   position: absolute;
@@ -611,7 +619,7 @@ form.post-password-form p input[type=submit] {
   width: auto;
   height: auto;
   font-size: 35px;
-  color: #000000 !important;
+  color: var(--lp-bcolor-body-color) !important;
   line-height: inherit;
   background-color: transparent;
   display: flex;
@@ -619,7 +627,7 @@ form.post-password-form p input[type=submit] {
   justify-content: center;
 }
 .site-navigation__cart .widget_shopping_cart .widget_shopping_cart_content .cart_list li a.remove:hover {
-  color: #ff5555 !important;
+  color: var(--lp-bcolor-hover-color) !important;
 }
 .site-navigation__cart .widget_shopping_cart .widget_shopping_cart_content .cart_list li a img {
   float: left;
@@ -686,7 +694,7 @@ form.post-password-form p input[type=submit] {
 }
 
 .search-field {
-  border: 1px solid #3498db;
+  border: 1px solid var(--lp-bcolor-primary-color);
   height: auto;
   padding: 9px 10px;
   border-radius: 3px;
@@ -694,7 +702,7 @@ form.post-password-form p input[type=submit] {
 }
 
 .search-submit {
-  background-color: #ff5555;
+  background-color: var(--lp-bcolor-hover-color);
   color: #fff;
   padding: 9px 10px;
   border: none;
@@ -763,7 +771,7 @@ section.widget.widget_calendar table caption {
   text-align: center;
 }
 section.widget.widget_calendar table tr {
-  border-bottom: 1px solid #3498db;
+  border-bottom: 1px solid var(--lp-bcolor-primary-color);
 }
 section.widget.widget_calendar table tr th {
   text-align: center;
@@ -773,7 +781,7 @@ section.widget.widget_calendar table tr td {
   text-align: center;
 }
 section.widget.widget_calendar table tr td#today {
-  background-color: #ff5555;
+  background-color: var(--lp-bcolor-hover-color);
   color: #ffffff;
 }
 section.widget.widget_calendar table tr td#today a {
@@ -800,9 +808,9 @@ section.widget.widget_tag_cloud .tagcloud a, section.widget.widget_product_tag_c
   margin: 0 2px 5px;
 }
 section.widget.widget_tag_cloud .tagcloud a:hover, section.widget.widget_product_tag_cloud .tagcloud a:hover {
-  background-color: #ff5555;
+  background-color: var(--lp-bcolor-hover-color);
   color: #ffffff;
-  border-color: #ff5555;
+  border-color: var(--lp-bcolor-hover-color);
 }
 section.widget .social-network-item {
   margin-bottom: 10px;
@@ -841,13 +849,13 @@ section.widget .recent-post-widget__list .meta i.fa {
   margin-bottom: 15px;
 }
 .global-footer__column {
-  border-top: 1px solid #3498db;
+  border-top: 1px solid var(--lp-bcolor-primary-color);
   padding: 30px 0;
 }
 .global-footer__bottom {
   padding: 10px 0;
   color: #ffffff;
-  background-color: #000000;
+  background-color: var(--lp-bcolor-body-color);
 }
 
 /**
@@ -855,7 +863,7 @@ section.widget .recent-post-widget__list .meta i.fa {
 -----------------------------------------------------------------------------*/
 .breadcrumbs .breadcrumbs-col {
   padding: 15px 0;
-  border-bottom: 1px solid #3498db;
+  border-bottom: 1px solid var(--lp-bcolor-primary-color);
 }
 
 form.wpcf7-form p {
@@ -872,7 +880,7 @@ form.wpcf7-form label {
   font-weight: 500;
 }
 form.wpcf7-form span.required {
-  color: #ff5555;
+  color: var(--lp-bcolor-hover-color);
 }
 form.wpcf7-form span.wpcf7-form-control-wrap {
   display: block;
@@ -914,7 +922,7 @@ form.wpcf7-form .wpcf7-submit {
 }
 .comments-area a,
 .comments-area .required {
-  color: #ff5555;
+  color: var(--lp-bcolor-required-color);
 }
 .comments-area__title {
   margin-bottom: 3rem;
@@ -930,7 +938,7 @@ form.wpcf7-form .wpcf7-submit {
   width: 3rem;
   height: 3rem;
   border-radius: 0.1rem;
-  background: #ff5555;
+  background: var(--lp-bcolor-hover-color);
   transition: all 0.4s ease-in-out;
 }
 .comments-area__list {
@@ -944,7 +952,7 @@ form.wpcf7-form .wpcf7-submit {
 .comments-area__list .comment__body {
   padding: 1.2rem;
   border-radius: 4px;
-  border: 1px solid #3498db;
+  border: 1px solid var(--lp-bcolor-primary-color);
 }
 .comments-area__list .comment__body > div:not(:last-child) {
   margin-bottom: 1.2rem;
@@ -979,7 +987,7 @@ form.wpcf7-form .wpcf7-submit {
   margin-right: 1.2rem;
 }
 .comments-area__list .comment__body .action a:hover {
-  color: #000000;
+  color: var(--lp-bcolor-body-color);
 }
 .comments-area__list .children {
   margin-top: 2.4rem;
@@ -1017,7 +1025,7 @@ form.wpcf7-form .wpcf7-submit {
   width: 100%;
   padding: 9px 22px;
   height: auto;
-  border: 1px solid #3498db;
+  border: 1px solid var(--lp-bcolor-primary-color);
   border-radius: 0;
 }
 .comments-area .comment-form .form-comment-field {
@@ -1032,15 +1040,15 @@ form.wpcf7-form .wpcf7-submit {
   width: auto;
   padding: 9px 22px;
   color: #000000;
-  background-color: #3498db;
+  background-color: var(--lp-bcolor-primary-color);
   border: none;
   border-radius: 3px;
   transition: all 0.4s ease-in-out;
 }
 .comments-area .comment-form .form-submit input:hover {
   color: #ffffff;
-  border-color: #ff5555;
-  background-color: #ff5555;
+  border-color: var(--lp-bcolor-hover-color);
+  background-color: var(--lp-bcolor-hover-color);
 }
 
 .pagination {
@@ -1071,8 +1079,8 @@ form.wpcf7-form .wpcf7-submit {
 }
 .page-numbers li span.current,
 .page-numbers li a:hover {
-  background: #ff5555;
-  border-color: #ff5555;
+  background: var(--lp-bcolor-hover-color);
+  border-color: var(--lp-bcolor-hover-color);
   color: #ffffff;
 }
 
@@ -1082,13 +1090,13 @@ form.wpcf7-form .wpcf7-submit {
 }
 .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next {
   margin: 0 6px;
-  color: #000000;
+  color: var(--lp-bcolor-body-color);
   font-size: 20px;
   line-height: normal;
   transition: all 0.4s ease-in-out;
 }
 .owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover {
-  color: #ff5555;
+  color: var(--lp-bcolor-hover-color);
 }
 .owl-carousel .owl-dots {
   margin-top: 30px;
@@ -1109,7 +1117,7 @@ form.wpcf7-form .wpcf7-submit {
   transition: all 0.2s ease-in-out;
 }
 .owl-carousel .owl-dots .owl-dot.active span, .owl-carousel .owl-dots .owl-dot:hover span {
-  background-color: #ff5555;
+  background-color: var(--lp-bcolor-hover-color);
 }
 
 .custom-equal-height-owl .owl-stage {
