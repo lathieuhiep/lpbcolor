@@ -16,8 +16,16 @@ body {
   @include flex-column;
 }
 
+@each $weight in $font-weights {
+  .fw-#{$weight} {
+    font-weight: #{$weight};
+  }
+}
+
 a {
-  @include transition();
+  --#{$prefix-my-theme}transition-link: var( --#{$prefix-my-theme}transition );
+
+  @include transition( var(--#{$prefix-my-theme}transition-link) );
 }
 
 p {
@@ -40,13 +48,13 @@ iframe {
 }
 
 blockquote {
-  border-left: 1px solid var(--#{$prefix-my-theme}hover-color);
+  border-left: .1rem solid var(--#{$prefix-my-theme}hover-color);
   padding-left: 3rem;
 }
 
 pre {
   white-space: pre-wrap;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 }
 
 .sticky-footer {
@@ -66,36 +74,37 @@ pre {
 #back-top {
   background-color: var(--#{$prefix-my-theme}hover-color);
   opacity: 0;
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   bottom: 0;
   cursor: pointer;
   position: fixed;
-  right: 15px;
+  right: 1.5rem;
   z-index: 1000;
   @include transition();
 
   a {
+    --#{$prefix-my-theme}transition-link: all 0.25s ease-in-out;
+
     display: block;
     color: #ffffff;
-    line-height: 40px;
+    line-height: 4rem;
     text-align: center;
     text-decoration: none;
-    @include transition(all 0.25s ease-in-out);
   }
 
   &.active_top {
     opacity: 1;
-    bottom: 15px;
+    bottom: 1.5rem;
   }
 
   &:hover {
-    background-color: #000000;
+    background-color: var(--#{$prefix-my-theme}color-black);
   }
 }
 
 .site-container {
-  padding: 50px 0;
+  padding: 5rem 0;
 
   &.site-container-elementor {
     padding: 0;

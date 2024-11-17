@@ -1,28 +1,42 @@
 @use "../abstracts/abstracts" as *;
 
 .global-header {
-  background-color: #ffffff;
-  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.3);
+  height: 7.6rem;
+  background-color: var(--#{$prefix-my-theme}color-white);
 }
 
 .site-navigation {
   position: relative;
   display: grid;
   grid-gap: 2.4rem;
+  height: inherit;
 
   &__logo {
     a {
       display: inline-block;
-      line-height: 64px;
-      padding: 15px 0;
     }
   }
 
   &__menu {
+    @media (min-width: 992px) {
+      height: inherit;
+    }
+
     > ul {
+      @media (min-width: 992px) {
+        height: inherit;
+      }
+
       > li {
+        @media (min-width: 992px) {
+          display: inline-flex;
+          height: inherit;
+          align-items: center;
+        }
+
         > a {
-          padding: 0 15px;
+          padding: 0 1.5rem;
+          font-weight: var(--#{$prefix-my-theme}font-weight-600);
         }
       }
     }
@@ -34,53 +48,7 @@
       li {
         position: relative;
 
-        a {
-          text-shadow: none;
-          display: block;
-
-          &:hover {
-            background-color: transparent;
-            color: var(--#{$prefix-my-theme}hover-color);
-          }
-        }
-
-        &:last-child {
-          a {
-            padding-right: 0;
-          }
-        }
-
-        .sub-menu-toggle {
-          &:after {
-            @include transition();
-          }
-        }
-
-        &.current-menu-item,
-        &.current-menu-parent {
-          > a {
-            color: var(--#{$prefix-my-theme}hover-color);
-          }
-        }
-      }
-    }
-
-    .sub-menu-toggle {
-      font-size: 14px;
-      cursor: pointer;
-
-      &:after {
-        content: "\f078";
-        display: inline-block;
-        font-family: $font-awesome-free;
-        font-style: normal;
-        font-weight: 900;
-      }
-    }
-
-    @media (min-width: 992px) and (max-width: 1400px) {
-      ul {
-        li {
+        @media (min-width: 992px) and (max-width: 1400px) {
           &:nth-last-child(1),
           &:nth-last-child(2) {
             .sub-menu {
@@ -103,36 +71,46 @@
             }
           }
         }
-      }
-    }
 
-    @media (min-width: 992px) and (max-width: 1200px) {
-      ul {
-        li {
-          a {
-            padding: 0 7px;
+        a {
+          text-shadow: none;
+          display: block;
+          color: var(--#{$prefix-my-theme}quaternary-color);
+
+          &:hover {
+            background-color: transparent;
+            color: var(--#{$prefix-my-theme}hover-color);
+          }
+
+          @media (min-width: 992px) and (max-width: 1200px) {
+            padding: 0 .7rem;
           }
         }
-      }
-    }
 
-    @media (min-width: 992px) {
-      > ul {
-        height: 100%;
-
-        > li {
-          display: inline-flex;
-          height: 100%;
-          align-items: center;
+        &:last-child {
+          a {
+            padding-right: 0;
+          }
         }
-      }
 
-      ul {
-        li {
-          .sub-menu {
+        .sub-menu-toggle {
+          &:after {
+            @include transition();
+          }
+        }
+
+        &.current-menu-item,
+        &.current-menu-parent {
+          > a {
+            color: var(--#{$prefix-my-theme}hover-color);
+          }
+        }
+
+        .sub-menu {
+          @media (min-width: 992px) {
             display: block !important;
-            min-width: 160px;
-            border-top: 1px solid var(--#{$prefix-my-theme}hover-color);
+            min-width: 16rem;
+            border-top: .1rem solid var(--#{$prefix-my-theme}hover-color);
             background-color: var(--#{$prefix-my-theme}primary-color);
             position: absolute;
             top: 120%;
@@ -143,7 +121,7 @@
             @include transition();
 
             li {
-              padding: 6px 8px;
+              padding: .6rem .8rem;
               display: flex;
 
               a {
@@ -153,7 +131,7 @@
 
               .sub-menu {
                 left: 90%;
-                top: -1px;
+                top: -.1rem;
               }
 
               &:hover {
@@ -169,7 +147,9 @@
               }
             }
           }
+        }
 
+        @media (min-width: 992px) {
           &:hover {
             > .sub-menu {
               top: 100%;
@@ -179,6 +159,18 @@
             }
           }
         }
+      }
+    }
+
+    .sub-menu-toggle {
+      font-size: 14px;
+      cursor: pointer;
+
+      &:after {
+        content: "\f078";
+        display: inline-block;
+        font-family: var(--#{$prefix-my-theme}font-icon);
+        font-weight: var(--#{$prefix-my-theme}font-weight-900);
       }
     }
 
@@ -344,40 +336,6 @@
                 width: 50px;
               }
             }
-
-            .woocommerce-Price-amount {
-              font-weight: 700;
-            }
-          }
-        }
-
-        .woocommerce-mini-cart__total {
-          padding: 15px 0 0 0;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .woocommerce-Price-amount {
-            font-weight: 700;
-          }
-        }
-
-        .woocommerce-mini-cart__buttons {
-          &:before,
-          &:after {
-            display: none;
-          }
-
-          a {
-            padding: 0 40px;
-            line-height: 40px;
-            display: block;
-            text-align: center;
-            margin-bottom: 10px;
-
-            &:last-child {
-              margin-bottom: 0;
-            }
           }
         }
       }
@@ -393,7 +351,7 @@
   }
 
   @media (min-width: 992px) {
-    grid-template-columns: 64px 1fr auto;
+    grid-template-columns: minmax(10rem, max-content) 1fr;
   }
 
   @media (max-width: 991px) {

@@ -47,6 +47,7 @@
 }
 
 //
-@mixin transition( $transition: all 0.4s ease-in-out ) {
+$transition-default: all 0.4s ease-in-out;
+@mixin transition( $transition: $transition-default ) {
   transition: $transition;
 }

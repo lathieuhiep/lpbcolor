@@ -4,7 +4,8 @@
  */
 
 add_action( 'tgmpa_register', 'lpbcolor_register_required_plugins' );
-function lpbcolor_register_required_plugins() {
+function lpbcolor_register_required_plugins(): void
+{
 
 	/**
 	 * Array of plugin arrays. Required keys are name and slug.
@@ -20,30 +21,9 @@ function lpbcolor_register_required_plugins() {
 		),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
-        array(
-            'name'      =>  'CMB2',
-            'slug'      =>  'cmb2',
-            'required'  =>  true,
-        ),
-
-		// This is an example of how to include a plugin from the WordPress Plugin Repository
 		array(
 			'name'      =>  'Elementor',
 			'slug'      =>  'elementor',
-			'required'  =>  true,
-		),
-
-		// This is an example of how to include a plugin from the WordPress Plugin Repository
-		array(
-			'name'      =>  'Woocommerce',
-			'slug'      =>  'woocommerce',
-			'required'  =>  true,
-		),
-
-		// This is an example of how to include a plugin from the WordPress Plugin Repository
-		array(
-			'name'      =>  'Breadcrumb Navxt',
-			'slug'      =>  'breadcrumb-navxt',
 			'required'  =>  true,
 		),
 
@@ -53,7 +33,6 @@ function lpbcolor_register_required_plugins() {
 			'slug'      =>  'contact-form-7',
 			'required'  =>  true,
 		),
-
 	);
 
 	/**

@@ -17,8 +17,6 @@ function lpbcolor_widget_registration($name, $id, $description = ''): void {
 
 function lpbcolor_multiple_widget_init(): void {
 	lpbcolor_widget_registration( esc_html__('Sidebar Main', 'lpbcolor'), 'sidebar-main' );
-	lpbcolor_widget_registration( esc_html__('Sidebar Shop', 'lpbcolor'), 'sidebar-wc', esc_html__('Display sidebar on page shop.', 'lpbcolor') );
-	lpbcolor_widget_registration( esc_html__('Sidebar Product', 'lpbcolor'), 'sidebar-wc-product', esc_html__('Display sidebar on page single product.', 'lpbcolor') );
 
 	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 1', 'lpbcolor'), 'sidebar-footer-column-1' );
 	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 2', 'lpbcolor'), 'sidebar-footer-column-2' );

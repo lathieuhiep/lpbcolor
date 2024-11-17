@@ -10,7 +10,22 @@
   --#{$prefix-my-theme}primary-color: #{$primary-color};
   --#{$prefix-my-theme}secondary-color: #{$secondary-color};
   --#{$prefix-my-theme}tertiary-color: #{$tertiary-color};
+  --#{$prefix-my-theme}quaternary-color: #{$quaternary-color};
 
   --#{$prefix-my-theme}hover-color: #{$hover-color};
   --#{$prefix-my-theme}required-color: #{$required-color};
+  --#{$prefix-my-theme}color-white: #{$color-white};
+  --#{$prefix-my-theme}color-black: #{$color-black};
+
+  // font weight
+  @each $weight in $font-weights {
+    --#{$prefix-my-theme}font-weight-#{$weight}: #{$weight};
+  }
+
+  // transition
+  --#{$prefix-my-theme}transition: #{$transition-default};
+
+  // font icon
+  --#{$prefix-my-theme}font-icon: #{$font-awesome-free};
+  --#{$prefix-my-theme}font-icon-brand: #{$font-awesome-brand};
 }

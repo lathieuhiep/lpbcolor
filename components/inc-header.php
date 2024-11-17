@@ -5,7 +5,7 @@ $cart = lpbcolor_get_option( 'opt_menu_cart', '1' );
 ?>
 <header class="global-header <?php echo esc_attr( $sticky_menu == '1' ? 'active-sticky-nav' : '' ); ?>">
     <nav class="site-navigation container">
-        <div class="site-navigation__logo">
+        <div class="site-navigation__logo d-flex align-items-center">
             <a href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
 				<?php
 				if ( ! empty( $logo['id'] ) ) :
@@ -45,15 +45,5 @@ $cart = lpbcolor_get_option( 'opt_menu_cart', '1' );
                 </ul>
 			<?php endif; ?>
         </div>
-
-		<?php if ( class_exists( 'Woocommerce' ) && $cart == '1' && ! is_cart() && ! is_checkout() ) : ?>
-            <div class="site-navigation__cart d-flex align-items-center">
-				<?php
-				do_action( 'lpbcolor_woo_shopping_cart' );
-
-				the_widget( 'WC_Widget_Cart', '' );
-				?>
-            </div>
-		<?php endif; ?>
     </nav>
 </header>

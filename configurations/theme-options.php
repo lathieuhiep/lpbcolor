@@ -30,15 +30,6 @@ if ( class_exists( 'CSF' ) ) {
 		'title'  => esc_html__( 'General', 'lpbcolor' ),
 		'icon'   => 'fas fa-cog',
 		'fields' => array(
-			// favicon
-			array(
-				'id'      => 'opt_general_favicon',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Upload Image Favicon', 'lpbcolor' ),
-				'library' => 'image',
-				'url'     => false
-			),
-
 			// logo
 			array(
 				'id'      => 'opt_general_logo',
@@ -227,77 +218,6 @@ if ( class_exists( 'CSF' ) ) {
 					),
 				)
 			),
-		)
-	) );
-
-	//
-	//  Create a section shop
-	CSF::createSection( $lpbcolor_prefix, array(
-		'id'    => 'opt_shop_section',
-		'title'  => esc_html__( 'Shop', 'lpbcolor' ),
-		'icon'   => 'fas fa-shopping-cart',
-	) );
-
-	// Category product
-	CSF::createSection( $lpbcolor_prefix, array(
-		'parent' => 'opt_shop_section',
-		'title'  => esc_html__( 'Category', 'lpbcolor' ),
-		'description' => esc_html__( 'Use for shop category and tag', 'lpbcolor' ),
-		'fields' => array(
-			// Sidebar
-			array(
-				'id'      => 'opt_shop_cat_sidebar_position',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Sidebar position', 'lpbcolor' ),
-				'options' => array(
-					'hide'  => esc_html__( 'Hide', 'lpbcolor' ),
-					'left'  => esc_html__( 'Left', 'lpbcolor' ),
-					'right' => esc_html__( 'Right', 'lpbcolor' ),
-				),
-				'default' => 'left'
-			),
-
-			// Limit
-			array(
-				'id'      => 'opt_shop_cat_limit',
-				'type'    => 'number',
-				'title'   => esc_html__( 'Limit Product', 'lpbcolor' ),
-				'default' => 12,
-			),
-
-			// Per Row
-			array(
-				'id'      => 'opt_shop_cat_per_row',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Products Per Row', 'lpbcolor' ),
-				'options' => array(
-					'3' => esc_html__( '3 Column', 'lpbcolor' ),
-					'4' => esc_html__( '4 Column', 'lpbcolor' ),
-					'5' => esc_html__( '5 Column', 'lpbcolor' ),
-				),
-				'default' => '4'
-			),
-		)
-	) );
-
-	// Single product
-	CSF::createSection( $lpbcolor_prefix, array(
-		'parent' => 'opt_shop_section',
-		'title'  => esc_html__( 'Single', 'lpbcolor' ),
-		'description' => esc_html__( 'Use for single product', 'lpbcolor' ),
-		'fields' => array(
-			// Sidebar
-			array(
-				'id'      => 'opt_shop_single_sidebar_position',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Sidebar position', 'lpbcolor' ),
-				'options' => array(
-					'hide'  => esc_html__( 'Hide', 'lpbcolor' ),
-					'left'  => esc_html__( 'Left', 'lpbcolor' ),
-					'right' => esc_html__( 'Right', 'lpbcolor' ),
-				),
-				'default' => 'left'
-			)
 		)
 	) );
 

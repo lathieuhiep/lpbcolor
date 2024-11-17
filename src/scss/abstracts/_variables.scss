@@ -12,12 +12,18 @@ $line-height-base: 1.5;
 $primary-color: #292D4D;
 $secondary-color: #FFD600;
 $tertiary-color: #00A77F;
+$quaternary-color: #262626;
 
 $hover-color: #FFD600;
 $required-color: #ff5555;
+$color-white: #ffffff;
+$color-black: #000000;
 
 // Fonts
 $font-family-base: 'Inter', sans-serif;
+
+// Font weights
+$font-weights: 400, 500, 600, 700, 900;
 
 // FontAwesome
 $font-awesome-free: 'Font Awesome 6 Free';
