@@ -45,7 +45,7 @@ $h6-font-size: $h6-font-size;
 // headings-variables
 $headings-color: $heading-color;
 $headings-font-family: $headings-font-family;
-$headings-margin-bottom: $headings-margin-bottom;
+$headings-margin-bottom: var(--#{$prefix-my-theme}heading-mb);
 $headings-font-weight: $headings-font-weight;
 $headings-line-height: $headings-line-height;
 

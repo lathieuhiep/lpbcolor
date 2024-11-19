@@ -120,3 +120,21 @@ pre {
     }
   }
 }
+
+.fs-14 {
+  --font-size: var(--#{$prefix-my-theme}body-font-size);
+  font-size: var(--font-size);
+}
+
+.fs-12 {
+  --font-size: 1.2rem;
+  font-size: var(--font-size);
+}
+
+@each $name, $color in $theme-colors {
+  .theme-color-#{"#{$name}"} {
+    --color-#{"#{$name}"}: var(--#{"#{$prefix-my-theme}color-#{$name}"});
+
+    color: var(--color-#{"#{$name}"});
+  }
+}

@@ -75,7 +75,7 @@
         a {
           text-shadow: none;
           display: block;
-          color: var(--#{$prefix-my-theme}quaternary-color);
+          color: var(--#{$prefix-my-theme}color-quaternary);
 
           &:hover {
             background-color: transparent;
@@ -111,7 +111,7 @@
             display: block !important;
             min-width: 16rem;
             border-top: .1rem solid var(--#{$prefix-my-theme}hover-color);
-            background-color: var(--#{$prefix-my-theme}primary-color);
+            background-color: var(--#{$prefix-my-theme}color-primary);
             position: absolute;
             top: 120%;
             left: 0;

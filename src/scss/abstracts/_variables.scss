@@ -9,15 +9,26 @@ $font-size-base: 1.4rem;
 $line-height-base: 1.5;
 
 // colors
-$primary-color: #292D4D;
-$secondary-color: #FFD600;
-$tertiary-color: #00A77F;
-$quaternary-color: #262626;
+$color-primary: #292D4D;
+$color-secondary: #FFD600;
+$color-tertiary: #00A77F;
+$color-quaternary: #262626;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+$theme-colors: (
+        primary: $color-primary,
+        secondary: $color-secondary,
+        tertiary: $color-tertiary,
+        quaternary: $color-quaternary,
+        white: $color-white,
+        black: $color-black
+);
 
 $hover-color: #FFD600;
 $required-color: #ff5555;
-$color-white: #ffffff;
-$color-black: #000000;
+
 
 // Fonts
 $font-family-base: 'Inter', sans-serif;
@@ -35,11 +46,11 @@ $font-awesome-brand: 'Font Awesome 6 Brands';
 $paragraph-margin-bottom: 1.2rem;
 
 // headings variables
-$headings-margin-bottom: 1.2rem;
+$headings-margin-bottom: .8rem;
 $heading-color: #292D4D;
 $headings-font-family: 'Inter', sans-serif;
 $headings-font-weight: 700;
-$headings-line-height: 1.25;
+$headings-line-height: 1.5;
 
 $h1-font-size: 3.6rem;
 $h2-font-size: 3rem;

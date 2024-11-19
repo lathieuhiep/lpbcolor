@@ -6,16 +6,15 @@
   --#{$prefix-my-theme}body-font-family: #{$font-family-base};
 
   --#{$prefix-my-theme}heading-color: #{$heading-color};
+  --#{$prefix-my-theme}heading-mb: #{$headings-margin-bottom};
 
-  --#{$prefix-my-theme}primary-color: #{$primary-color};
-  --#{$prefix-my-theme}secondary-color: #{$secondary-color};
-  --#{$prefix-my-theme}tertiary-color: #{$tertiary-color};
-  --#{$prefix-my-theme}quaternary-color: #{$quaternary-color};
+  // theme colors
+  @each $name, $color in $theme-colors {
+    --#{$prefix-my-theme}color-#{"#{$name}"}: #{$color};
+  }
 
   --#{$prefix-my-theme}hover-color: #{$hover-color};
   --#{$prefix-my-theme}required-color: #{$required-color};
-  --#{$prefix-my-theme}color-white: #{$color-white};
-  --#{$prefix-my-theme}color-black: #{$color-black};
 
   // font weight
   @each $weight in $font-weights {

@@ -5,7 +5,7 @@
 }
 
 .search-field {
-  border: 1px solid var(--#{$prefix-my-theme}primary-color);
+  border: 1px solid var(--#{$prefix-my-theme}color-primary);
   height: auto;
   padding: 9px 10px;
   border-radius: 3px;
@@ -110,7 +110,7 @@ section {
         }
 
         tr {
-          border-bottom: 1px solid var(--#{$prefix-my-theme}primary-color);
+          border-bottom: 1px solid var(--#{$prefix-my-theme}color-primary);
 
           th {
             text-align: center;

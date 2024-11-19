@@ -6,14 +6,15 @@
   --lp-bcolor-body-font-size: 1.4rem;
   --lp-bcolor-body-font-family: Inter, sans-serif;
   --lp-bcolor-heading-color: #292D4D;
-  --lp-bcolor-primary-color: #292D4D;
-  --lp-bcolor-secondary-color: #FFD600;
-  --lp-bcolor-tertiary-color: #00A77F;
-  --lp-bcolor-quaternary-color: #262626;
-  --lp-bcolor-hover-color: #FFD600;
-  --lp-bcolor-required-color: #ff5555;
+  --lp-bcolor-heading-mb: 0.8rem;
+  --lp-bcolor-color-primary: #292D4D;
+  --lp-bcolor-color-secondary: #FFD600;
+  --lp-bcolor-color-tertiary: #00A77F;
+  --lp-bcolor-color-quaternary: #262626;
   --lp-bcolor-color-white: #ffffff;
   --lp-bcolor-color-black: #000000;
+  --lp-bcolor-hover-color: #FFD600;
+  --lp-bcolor-required-color: #ff5555;
   --lp-bcolor-font-weight-400: 400;
   --lp-bcolor-font-weight-500: 500;
   --lp-bcolor-font-weight-600: 600;
@@ -146,6 +147,46 @@ pre {
   display: table;
   clear: both;
   content: "";
+}
+
+.fs-14 {
+  --font-size: var(--lp-bcolor-body-font-size);
+  font-size: var(--font-size);
+}
+
+.fs-12 {
+  --font-size: 1.2rem;
+  font-size: var(--font-size);
+}
+
+.theme-color-primary {
+  --color-primary: var(--lp-bcolor-color-primary);
+  color: var(--color-primary);
+}
+
+.theme-color-secondary {
+  --color-secondary: var(--lp-bcolor-color-secondary);
+  color: var(--color-secondary);
+}
+
+.theme-color-tertiary {
+  --color-tertiary: var(--lp-bcolor-color-tertiary);
+  color: var(--color-tertiary);
+}
+
+.theme-color-quaternary {
+  --color-quaternary: var(--lp-bcolor-color-quaternary);
+  color: var(--color-quaternary);
+}
+
+.theme-color-white {
+  --color-white: var(--lp-bcolor-color-white);
+  color: var(--color-white);
+}
+
+.theme-color-black {
+  --color-black: var(--lp-bcolor-color-black);
+  color: var(--color-black);
 }
 
 .wp-caption.alignnone, .alignnone, a img.alignnone {
@@ -314,7 +355,7 @@ form.post-password-form p input[type=submit] {
 .site-navigation__menu ul li a {
   text-shadow: none;
   display: block;
-  color: var(--lp-bcolor-quaternary-color);
+  color: var(--lp-bcolor-color-quaternary);
 }
 .site-navigation__menu ul li a:hover {
   background-color: transparent;
@@ -339,7 +380,7 @@ form.post-password-form p input[type=submit] {
     display: block !important;
     min-width: 16rem;
     border-top: 0.1rem solid var(--lp-bcolor-hover-color);
-    background-color: var(--lp-bcolor-primary-color);
+    background-color: var(--lp-bcolor-color-primary);
     position: absolute;
     top: 120%;
     left: 0;
@@ -562,7 +603,7 @@ form.post-password-form p input[type=submit] {
 }
 
 .search-field {
-  border: 1px solid var(--lp-bcolor-primary-color);
+  border: 1px solid var(--lp-bcolor-color-primary);
   height: auto;
   padding: 9px 10px;
   border-radius: 3px;
@@ -639,7 +680,7 @@ section.widget.widget_calendar table caption {
   text-align: center;
 }
 section.widget.widget_calendar table tr {
-  border-bottom: 1px solid var(--lp-bcolor-primary-color);
+  border-bottom: 1px solid var(--lp-bcolor-color-primary);
 }
 section.widget.widget_calendar table tr th {
   text-align: center;
@@ -717,7 +758,7 @@ section.widget .recent-post-widget__list .meta i.fa {
   margin-bottom: 15px;
 }
 .global-footer__column {
-  border-top: 1px solid var(--lp-bcolor-primary-color);
+  border-top: 1px solid var(--lp-bcolor-color-primary);
   padding: 30px 0;
 }
 .global-footer__bottom {
@@ -731,7 +772,7 @@ section.widget .recent-post-widget__list .meta i.fa {
 -----------------------------------------------------------------------------*/
 .breadcrumbs .breadcrumbs-col {
   padding: 15px 0;
-  border-bottom: 1px solid var(--lp-bcolor-primary-color);
+  border-bottom: 1px solid var(--lp-bcolor-color-primary);
 }
 
 form.wpcf7-form p {
@@ -820,7 +861,7 @@ form.wpcf7-form .wpcf7-submit {
 .comments-area__list .comment__body {
   padding: 1.2rem;
   border-radius: 4px;
-  border: 1px solid var(--lp-bcolor-primary-color);
+  border: 1px solid var(--lp-bcolor-color-primary);
 }
 .comments-area__list .comment__body > div:not(:last-child) {
   margin-bottom: 1.2rem;
@@ -893,7 +934,7 @@ form.wpcf7-form .wpcf7-submit {
   width: 100%;
   padding: 9px 22px;
   height: auto;
-  border: 1px solid var(--lp-bcolor-primary-color);
+  border: 1px solid var(--lp-bcolor-color-primary);
   border-radius: 0;
 }
 .comments-area .comment-form .form-comment-field {
@@ -908,7 +949,7 @@ form.wpcf7-form .wpcf7-submit {
   width: auto;
   padding: 9px 22px;
   color: #000000;
-  background-color: var(--lp-bcolor-primary-color);
+  background-color: var(--lp-bcolor-color-primary);
   border: none;
   border-radius: 3px;
   transition: all 0.4s ease-in-out;
