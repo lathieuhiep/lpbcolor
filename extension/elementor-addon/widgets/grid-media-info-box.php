@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class LPBColor_Elementor_Grid_Blocks extends Widget_Base
+class LPBColor_Elementor_Grid_Media_Info_Box extends Widget_Base
 {
 
     /**
@@ -23,7 +23,7 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
      */
     public function get_name(): string
     {
-        return 'lpbcolor-grid-blocks';
+        return 'lpbcolor-grid-media-info-box';
     }
 
     /**
@@ -36,7 +36,7 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
      */
     public function get_title(): string
     {
-        return esc_html__('Grid Blocks', 'lpbcolor');
+        return esc_html__('Grid Media Info Box', 'lpbcolor');
     }
 
     /**
@@ -105,7 +105,7 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
                 'step' => 1,
                 'default' => 4,
                 'selectors' => [
-                    '{{WRAPPER}} .element-grid-blocks__warp' => '--grid-columns: repeat({{VALUE}}, minmax(0, 1fr));',
+                    '{{WRAPPER}} .element-grid-media-info-box' => '--grid-columns: repeat({{VALUE}}, minmax(0, 1fr));',
                 ],
             ]
         );
@@ -128,7 +128,7 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
                     'size' => 2,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-grid-blocks__warp' => '--column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .element-grid-media-info-box' => '--column-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -151,7 +151,7 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
                     'size' => 2,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-grid-blocks__warp' => '--row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .element-grid-media-info-box' => '--row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -237,53 +237,12 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'title_align',
-            [
-                'label' => esc_html__( 'Căn chỉnh', 'lpbcolor' ),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__( 'Căn trái', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__( 'Căn giữa', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-                    'right' => [
-                        'title' => esc_html__( 'Căn phải', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-                    'justify' => [
-                        'title' => esc_html__( 'Căn đều hai lề', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-justify',
-                    ],
-                ],
-                'toggle' => true,
-                'selectors' => [
-                    '{{WRAPPER}} .element-grid-blocks__warp .title' => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_color',
-            [
-                'label'     =>  esc_html__( 'Màu chữ', 'lpbcolor' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-grid-blocks__warp .title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
                 'label' => esc_html__( 'Typography', 'lpbcolor' ),
-                'selector' => '{{WRAPPER}} .element-grid-blocks__warp .title',
+                'selector' => '{{WRAPPER}} .element-grid-media-info-box .title',
             ]
         );
 
@@ -299,43 +258,12 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
         );
 
         $this->add_control(
-            'content_align',
-            [
-                'label' => esc_html__( 'Căn chỉnh', 'lpbcolor' ),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__( 'Căn trái', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__( 'Căn giữa', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-                    'right' => [
-                        'title' => esc_html__( 'Căn phải', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-                    'justify' => [
-                        'title' => esc_html__( 'Căn đều hai lề', 'lpbcolor' ),
-                        'icon' => 'eicon-text-align-justify',
-                    ],
-                ],
-                'default' => 'justify',
-                'toggle' => true,
-                'selectors' => [
-                    '{{WRAPPER}} .element-grid-blocks__warp .content' => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
             'content_color',
             [
                 'label'     =>  esc_html__( 'Màu chữ', 'lpbcolor' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-grid-blocks__warp .content' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-grid-media-info-box .content' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -345,7 +273,7 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
             [
                 'name' => 'content_typography',
                 'label' => esc_html__( 'Typography', 'lpbcolor' ),
-                'selector' => '{{WRAPPER}} .element-grid-blocks__warp .content',
+                'selector' => '{{WRAPPER}} .element-grid-media-info-box .content',
             ]
         );
 
@@ -362,35 +290,40 @@ class LPBColor_Elementor_Grid_Blocks extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-        $image_size = $settings['image_size'];
+
     ?>
-        <div class="element-grid-blocks">
-            <div class="element-grid-blocks__warp">
-                <?php foreach ( $settings['list'] as $item ) : ?>
-                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( !empty( $item['list_image']['id'] ) ) : ?>
-                            <div class="item__thumbnail">
-                                <?php  echo wp_get_attachment_image( $item['list_image']['id'], $image_size ); ?>
-                            </div>
-                        <?php endif; ?>
+        <div class="element-grid-media-info-box">
+            <?php foreach ( $settings['list'] as $item ) : ?>
 
-                        <div class="item__body">
-                            <?php if ( $item['list_title'] ) : ?>
-                                <h3 class="title fs-14 theme-color-secondary">
-                                    <?php echo esc_html( $item['list_title'] ); ?>
-                                </h3>
-                            <?php endif; ?>
-
-                            <?php if ( $item['list_content'] ) : ?>
-                                <div class="content theme-color-white fs-12">
-                                    <?php echo wpautop( $item['list_content'] ); ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+            <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                <?php if ( !empty( $item['list_image']['id'] ) ) : ?>
+                    <div class="item__thumbnail text-center">
+                        <?php
+                        echo wp_get_attachment_image( $item['list_image']['id'], $settings['image_size'], false,
+                            array(
+                                'class' => 'd-inline-block'
+                            ) );
+                        ?>
                     </div>
-                <?php endforeach; ?>
+                <?php endif; ?>
+
+                <div class="item__body">
+                    <?php if ( $item['list_title'] ) : ?>
+                        <h3 class="title fs-14 theme-color-white text-center">
+                            <?php echo esc_html( $item['list_title'] ); ?>
+                        </h3>
+                    <?php endif; ?>
+
+                    <?php if ( $item['list_content'] ) : ?>
+                        <div class="content text-align-justify">
+                            <?php echo wpautop( $item['list_content'] ); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
+
+            <?php endforeach; ?>
         </div>
-    <?php
+        <?php
     }
 }

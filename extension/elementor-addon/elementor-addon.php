@@ -14,11 +14,27 @@ function lpbcolor_add_elementor_widget_categories( $elements_manager ): void {
 	);
 }
 
+// image size options
+function lpbcolor_image_size_options(): array
+{
+    return [
+        'thumbnail' => esc_html__( 'Thumbnail (150 x 150)', 'lpbcolor' ),
+        'medium' => esc_html__( 'Medium(300 x 300)', 'lpbcolor' ),
+        'medium_large' => esc_html__( 'Medium Large(768 x 0 chiều cao vô hạn', 'lpbcolor' ),
+        'large' => esc_html__( 'Large(1024 x 1024)', 'lpbcolor' ),
+        'full' => esc_html__( 'Full Size(Kích thước gốc)', 'lpbcolor' ),
+    ];
+}
+
+
 // Register widgets
 add_action( 'elementor/widgets/register', 'lpbcolor_register_widget_elementor_addon' );
 function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-blocks.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-media-info-box.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-carousel.php' );
+
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slides.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-text.php' );
@@ -31,6 +47,8 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 
 	// register add on
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Blocks() );
+    $widgets_manager->register( new \LPBColor_Elementor_Grid_Media_Info_Box() );
+    $widgets_manager->register( new \LPBColor_Elementor_Image_Carousel() );
 
 //	$widgets_manager->register( new \lpbcolor_Elementor_Slides() );
 //	$widgets_manager->register( new \lpbcolor_Elementor_About_Text() );

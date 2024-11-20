@@ -1,0 +1,27 @@
+@use "../abstracts/abstracts" as *;
+
+.element-grid-media-info-box {
+  display: grid;
+  row-gap: var(--row-gap, 2rem);
+  column-gap: var(--column-gap, 2rem);
+  grid-template-columns: var(--grid-columns, repeat(4, minmax(0, 1fr)));
+
+  .item {
+    &__thumbnail {
+      margin-bottom: 2.8rem;
+    }
+
+    &__body {
+      .title {
+        margin-bottom: 2.5rem;
+        padding: 1.4rem 1.2rem;
+        background: linear-gradient(90deg, #060C21 0%, #415B83 48.5%, #191A2B 100%);
+        @extend %border-radius-8;
+      }
+
+      .content {
+        text-align: justify;
+      }
+    }
+  }
+}

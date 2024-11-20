@@ -189,6 +189,10 @@ pre {
   color: var(--color-black);
 }
 
+.text-align-justify {
+  text-align: justify;
+}
+
 .wp-caption.alignnone, .alignnone, a img.alignnone {
   margin: 0.5rem 2rem 2rem 0;
 }

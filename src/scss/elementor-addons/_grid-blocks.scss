@@ -7,13 +7,9 @@
     column-gap: var(--column-gap, 2rem);
     grid-template-columns: var(--grid-columns, repeat(4, minmax(0, 1fr)));
 
-    %border-radius {
-      border-radius: .8rem;
-    }
-
     .item {
       position: relative;
-      @extend %border-radius;
+      @extend %border-radius-8;
       @include transition();
 
       &:hover {
@@ -24,7 +20,7 @@
       &__thumbnail {
         height: 33.5rem;
         overflow: hidden;
-        @extend %border-radius;
+        @extend %border-radius-8;
 
         img {
           width: 100%;
