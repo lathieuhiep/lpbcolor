@@ -1,0 +1,30 @@
+@use "../abstracts/abstracts" as *;
+
+.element-info-card {
+  padding: var(--padding-card, 2.5rem);
+  min-height: var(--min-height, auto);
+  @extend %border-radius-8;
+  box-shadow: .4rem .4rem 1.5rem 0 #0000001A;
+  background-color: var(--#{$prefix-my-theme}--color-white);
+
+  .top {
+    --icon-width: 4.6rem;
+
+    margin-bottom: 1.8rem;
+    display: grid;
+    gap: 1.8rem;
+    grid-template-columns: var(--icon-width) 1fr;
+    align-items: center;
+
+    .icon {
+      &__box {
+        @include square( var(--icon-width), 1.8rem );
+      }
+    }
+  }
+
+  .title {
+    margin: 0;
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,7 @@
+@use "../abstracts/abstracts" as *;
+
+.elementor-widget-container {
+  .elementor-heading-title {
+    line-height: inherit;
+  }
+}
