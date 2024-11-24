@@ -1,6 +1,8 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Repeater;
+use Elementor\Utils;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -84,7 +86,7 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
      */
     protected function register_controls(): void
     {
-        // content
+        // slider
         $this->start_controls_section(
             'slider_section',
             [
@@ -103,13 +105,56 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'gallery',
+        $repeater = new Repeater();
+
+        $repeater->add_control(
+            'list_title', [
+                'label' => esc_html__( 'Tiêu đề', 'paint' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__( 'List Title' , 'paint' ),
+                'label_block' => true,
+            ]
+        );
+
+        $repeater->add_control(
+            'list_image',
             [
-                'label' => esc_html__( 'Thêm ảnh', 'lpbcolor' ),
-                'type' => Controls_Manager::GALLERY,
-                'show_label' => false,
-                'default' => [],
+                'label' => esc_html__( 'Ảnh', 'paint' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'list_link',
+            [
+                'label'         =>  esc_html__( 'Link', 'paint' ),
+                'type'          =>  Controls_Manager::URL,
+                'label_block'   =>  true,
+                'placeholder'   =>  esc_html__( 'https://your-link.com', 'paint' ),
+                'default' => [
+                    'url' => ''
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'list',
+            [
+                'label' => esc_html__( 'Danh sách', 'paint' ),
+                'type' => Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'list_title' => esc_html__( 'Tiêu đề #1', 'paint' )
+                    ],
+                    [
+                        'list_title' => esc_html__( 'Tiêu đề #2', 'paint' )
+                    ],
+                ],
+                'title_field' => '{{{ list_title }}}',
             ]
         );
 
@@ -367,6 +412,147 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
         );
 
         $this->end_controls_section();
+
+        // style image box
+        $this->start_controls_section(
+            'section_style_box_image',
+            [
+                'label' => esc_html__( 'Hộp chứa hình ảnh', 'lpbcolor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_box_border_radius',
+            [
+                'label' => esc_html__( 'Border Radius', 'lpbcolor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-carousel .item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style image
+        $this->start_controls_section(
+            'section_style_image',
+            [
+                'label' => esc_html__( 'Hình ảnh', 'lpbcolor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_width',
+            [
+                'label' => esc_html__( 'Width', 'lpbcolor' ),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 100,
+                    'unit' => '%',
+                ],
+                'tablet_default' => [
+                    'unit' => '%',
+                ],
+                'mobile_default' => [
+                    'unit' => '%',
+                ],
+                'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1000,
+                    ],
+                    'vw' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-carousel .item__thumbnail img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_height',
+            [
+                'label' => esc_html__( 'Height', 'lpbcolor' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'vh', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 500,
+                    ],
+                    'vh' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-carousel .item__thumbnail img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_object_fit',
+            [
+                'label' => esc_html__( 'Đối tượng phù hợp', 'lpbcolor' ),
+                'type' => Controls_Manager::SELECT,
+                'condition' => [
+                    'image_height[size]!' => '',
+                ],
+                'options' => [
+                    '' => esc_html__( 'Mặc định', 'lpbcolor' ),
+                    'fill' => esc_html__( 'Lấp đầy', 'lpbcolor' ),
+                    'cover' => esc_html__( 'Bao bọc', 'lpbcolor' ),
+                    'contain' => esc_html__( 'Chứa', 'lpbcolor' ),
+                    'scale-down' => esc_html__( 'Thu nhỏ', 'lpbcolor' ),
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-carousel .item__thumbnail img' => 'object-fit: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_object_position',
+            [
+                'label' => esc_html__( 'Ví trí của đối tượng', 'lpbcolor' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'center center' => esc_html__( 'Chính giữa', 'lpbcolor' ),
+                    'center left' => esc_html__( 'Ở giữa bên trái', 'lpbcolor' ),
+                    'center right' => esc_html__( 'Ở giữa bên phải', 'lpbcolor' ),
+                    'top center' => esc_html__( 'Trên cùng ở giữa', 'lpbcolor' ),
+                    'top left' => esc_html__( 'Trên cùng bên trái', 'lpbcolor' ),
+                    'top right' => esc_html__( 'Trên cùng bên phải', 'lpbcolor' ),
+                    'bottom center' => esc_html__( 'Phía dưới ở giữa', 'lpbcolor' ),
+                    'bottom left' => esc_html__( 'Phía dưới bên trái', 'lpbcolor' ),
+                    'bottom right' => esc_html__( 'Phía dưới bên phải', 'lpbcolor' ),
+                ],
+                'default' => 'center center',
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-carousel .item__thumbnail img' => 'object-position: {{VALUE}};',
+                ],
+                'condition' => [
+                    'image_height[size]!' => '',
+                    'image_object_fit' => [ 'cover', 'contain', 'scale-down' ],
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
@@ -379,10 +565,6 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-
-        if ( empty( $settings['gallery'] ) ) {
-            return;
-        }
 
         // owl options
         $owl_options = [
@@ -417,14 +599,30 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
             ],
         ];
     ?>
-        <div class="element-image-carousel">
-            <div class="element-image-carousel__warp custom-owl-carousel owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
-                <?php foreach ( $settings['gallery'] as $image  ): ?>
-                    <div class="item">
-                        <?php echo wp_get_attachment_image( $image['id'], $settings['image_size'] ); ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+        <div class="element-image-carousel custom-owl-carousel owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+            <?php
+            foreach ( $settings['list'] as $index => $item  ):
+                $imageId = $item['list_image']['id'];
+                $url = $item['list_link']['url'];
+            ?>
+                <div class="item lpbcolor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                    <?php if ( $imageId ) : ?>
+                        <div class="item__thumbnail">
+                            <?php
+                            if ( !empty( $url ) ) :
+                                $link_key = 'link_' . $index;
+                                $this->add_link_attributes( $link_key, $item['list_link'] );
+                            ?>
+                                <a class="link" <?php $this->print_render_attribute_string( $link_key ); ?>></a>
+                            <?php
+                            endif;
+
+                            echo wp_get_attachment_image( $imageId, $settings['image_size'] );
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </div>
         <?php
     }

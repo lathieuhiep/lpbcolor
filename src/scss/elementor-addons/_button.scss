@@ -1,0 +1,52 @@
+@use "../abstracts/abstracts" as *;
+
+.element-button {
+  display: flex;
+
+  &__warp {
+    position: relative;
+    padding: var(--btn-padding, .5rem 1.2rem .5rem .4rem);
+    border-radius: var(--btn-border-radius, 6.8rem);
+    background: var(--btn-background, #292D4D);
+    @include flex-center();
+    column-gap: 2rem;
+    row-gap: 1.2rem;
+    flex: 0 0 auto;
+    @include transition();
+
+    .link {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .icon {
+      &__box {
+        @include square(2.8rem, 50%);
+        font-size: 2.1rem;@include flex-center();
+        background: var(--icon-background, #ffffff);
+
+        svg {
+          @include square(2.1rem);
+        }
+      }
+    }
+
+    .text {
+      font-size: var(--btn-font-size, 1.6rem);
+      @include transition();
+    }
+
+    &:hover {
+      --btn-background: var( --#{$prefix-my-theme}hover-color );
+
+      .text {
+        --text-color-hover: var(--#{$prefix-my-theme}color-primary);
+        
+        color: var(--text-color-hover);
+      }
+    }
+  }
+}

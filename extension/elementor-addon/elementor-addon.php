@@ -31,6 +31,7 @@ function lpbcolor_image_size_options(): array
 add_action( 'elementor/widgets/register', 'lpbcolor_register_widget_elementor_addon' );
 function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/button-theme.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-blocks.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-media-info-box.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-carousel.php' );
@@ -47,6 +48,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-box.php' );
 
 	// register add on
+    $widgets_manager->register( new \LPBColor_Elementor_Button() );
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Blocks() );
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Media_Info_Box() );
     $widgets_manager->register( new \LPBColor_Elementor_Image_Carousel() );
@@ -70,11 +72,13 @@ function lpbcolor_elementor_scripts(): void {
 	if ( $lpbcolor_check_elementor == 'builder' ) {
 		// style
 		wp_enqueue_style( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
+		wp_enqueue_style( 'swiper-bundle.min', get_theme_file_uri( '/assets/libs/swiper/swiper-bundle.min.css' ), array(), '11.1.15' );
 
 		wp_enqueue_style( 'lpbcolor-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/addons.min.css' ), array(), lpbcolor_get_version_theme() );
 
 		// js
 		wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
+		wp_enqueue_script( 'swiper-bundle.min', get_theme_file_uri( '/assets/libs/swiper/swiper-bundle.min.js' ), array( 'jquery' ), '11.1.15', true );
 
 		wp_enqueue_script( 'lpbcolor-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
 	}

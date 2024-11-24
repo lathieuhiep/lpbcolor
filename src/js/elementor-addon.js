@@ -17,7 +17,7 @@
 
     // element image slider
     const elementImageSlider = ($scope, $) => {
-        const slider = $scope.find('.element-image-carousel__warp')
+        const slider = $scope.find('.element-image-carousel')
 
         if (slider.length) {
             slider.each(function () {

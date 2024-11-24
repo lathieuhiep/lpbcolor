@@ -1,31 +1,31 @@
 @use "../abstracts/abstracts" as *;
 
 .element-image-carousel {
-  &__warp {
-    .item {
-      @include transition();
+  .item {
+    overflow: hidden;
+    @include transition();
 
-      &:hover {
-        box-shadow: 0 .3rem .5rem #888888;
-      }
+    &:hover {
+      box-shadow: 0 .3rem .5rem #888888;
     }
 
-    &.owl-carousel {
-      .owl-stage-outer {
-        padding-bottom: 1rem;
-      }
+    &__thumbnail {
+      position: relative;
 
-      .owl-item {
-        &.active {
-          ~ .owl-item {
-            .item {
-              @media (max-width: 479px) {
-                transform: scale(0.85);
-              }
-            }
-          }
-        }
+      .link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
       }
+    }
+  }
+
+  &.owl-carousel {
+    .owl-stage-outer {
+      padding-bottom: 1rem;
     }
   }
 }

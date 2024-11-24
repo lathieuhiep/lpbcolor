@@ -112,6 +112,23 @@ function buildJsOwlCarouse() {
         .pipe(browserSync.stream())
 }
 
+/*
+Task build swiper
+* */
+function copySwiperCSS() {
+    return src([
+        `${pathNodeModule}/swiper/swiper-bundle.min.css`
+    ], {allowEmpty: true})
+        .pipe(gulp.dest(`${pathDist}/libs/swiper/`));
+}
+
+function copySwiperJs() {
+    return src([
+        `${pathNodeModule}/swiper/swiper-bundle.min.js`
+    ], {allowEmpty: true})
+        .pipe(gulp.dest(`${pathDist}/libs/swiper/`));
+}
+
 // Task build style theme
 function buildStyleTheme() {
     return src(`${pathSrc}/scss/style-theme.scss`)
@@ -209,6 +226,9 @@ async function buildProject() {
 
     await buildStyleOwlCarousel()
     await buildJsOwlCarouse()
+
+    await copySwiperCSS()
+    await copySwiperJs()
 
     await buildStyleTheme()
     await buildJSTheme()
