@@ -38,6 +38,11 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
         return esc_html__('Slider Ảnh', 'lpbcolor');
     }
 
+    public function get_style_depends(): array
+    {
+        return [ 'owl.carousel' ];
+    }
+
     /**
      * Get widget icon.
      *
@@ -77,13 +82,10 @@ class LPBColor_Elementor_Image_Carousel extends Widget_Base
         return ['my-theme'];
     }
 
-    /**
-     * Register oEmbed widget controls.
-     *
-     * Add input fields to allow the user to customize the widget settings.
-     *
-     * @access protected
-     */
+    public function get_script_depends(): array
+    {
+        return [ 'owl.carousel' ];
+    }
     protected function register_controls(): void
     {
         // slider

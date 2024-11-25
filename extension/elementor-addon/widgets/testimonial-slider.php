@@ -1,7 +1,5 @@
 <?php
 
-use Elementor\Repeater;
-use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -24,187 +22,64 @@ class lpbcolor_Elementor_Testimonial_Slider extends Widget_Base {
         return 'eicon-user-circle-o';
     }
 
+    public function get_style_depends()
+    {
+        return ['e-swiper'];
+    }
+
     protected function register_controls(): void {
 
         // Content testimonial
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Content', 'lpbcolor' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $repeater = new Repeater();
-
-        $repeater->add_control(
-            'list_title', [
-                'label' => esc_html__( 'Name', 'lpbcolor' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'John Doe' , 'lpbcolor' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_position',
-            [
-                'label'         =>  esc_html__( 'Position', 'lpbcolor' ),
-                'type'          =>  Controls_Manager::TEXT,
-                'default'       =>  esc_html__( 'Codetic', 'lpbcolor' ),
-                'label_block'   =>  true
-            ]
-        );
-
-        $repeater->add_control(
-            'list_image',
-            [
-                'label' => esc_html__( 'Choose Image', 'lpbcolor' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'list_description',
-            [
-                'label' => esc_html__( 'Description', 'lpbcolor' ),
-                'type' => Controls_Manager::TEXTAREA,
-                'rows' => 10,
-                'default' => esc_html__( 'GEMs are robotics algorithm for modules that built & optimized for NVIDIA AGX Data should underlie every business decision. Data should underlie every business Yet too often some very down the certain routes.', 'lpbcolor' ),
-                'placeholder' => esc_html__( 'Type your description here', 'lpbcolor' ),
-            ]
-        );
-
-        $this->add_control(
-            'list',
-            [
-                'label' => esc_html__( 'List', 'lpbcolor' ),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'list_title' => esc_html__( 'Title #1', 'lpbcolor' ),
-                    ],
-                    [
-                        'list_title' => esc_html__( 'Title #2', 'lpbcolor' ),
-                    ],
-                ],
-                'title_field' => '{{{ list_title }}}',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Content additional options
-        $this->start_controls_section(
-            'additional_options_section',
-            [
-                'label' => esc_html__( 'Additional Options', 'lpbcolor' ),
+                'label' => esc_html__( 'Nội dung', 'lpbcolor' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
-            'loop',
+            'gallery',
             [
-                'type'          =>  Controls_Manager::SWITCHER,
-                'label'         =>  esc_html__('Loop Slider ?', 'lpbcolor'),
-                'label_off'     =>  esc_html__('No', 'lpbcolor'),
-                'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
-                'return_value'  =>  'yes',
-                'default'       =>  'yes',
-            ]
-        );
-
-        $this->add_control(
-            'autoplay',
-            [
-                'label'         =>  esc_html__('Autoplay?', 'lpbcolor'),
-                'type'          =>  Controls_Manager::SWITCHER,
-                'label_off'     =>  esc_html__('No', 'lpbcolor'),
-                'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
-                'return_value'  =>  'yes',
-                'default'       =>  'no',
-            ]
-        );
-
-        $this->add_control(
-            'nav',
-            [
-                'label'         =>  esc_html__('Nav Slider', 'lpbcolor'),
-                'type'          =>  Controls_Manager::SWITCHER,
-                'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
-                'label_off'     =>  esc_html__('No', 'lpbcolor'),
-                'return_value'  =>  'yes',
-                'default'       =>  'yes',
-            ]
-        );
-
-        $this->add_control(
-            'dots',
-            [
-                'label'         =>  esc_html__('Dots Slider', 'lpbcolor'),
-                'type'          =>  Controls_Manager::SWITCHER,
-                'label_on'      =>  esc_html__('Yes', 'lpbcolor'),
-                'label_off'     =>  esc_html__('No', 'lpbcolor'),
-                'return_value'  =>  'yes',
-                'default'       =>  'yes',
+                'label' => esc_html__( 'Thêm ảnh', 'lpbcolor' ),
+                'type' => Controls_Manager::GALLERY,
+                'show_label' => false,
+                'default' => [],
             ]
         );
 
         $this->end_controls_section();
-
     }
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-
-        $data_settings_owl = [
-            'loop' => ('yes' === $settings['loop']),
-            'nav' => ('yes' === $settings['nav']),
-            'dots' => ('yes' === $settings['dots']),
-            'autoplay' => ('yes' === $settings['autoplay']),
-            'items' => 1
-        ];
     ?>
 
         <div class="element-testimonial-slider">
-            <div class="custom-owl-carousel owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode( $data_settings_owl ) ; ?>'>
-                <?php
-                foreach ( $settings['list'] as $item ) :
-                    $imageId = $item['list_image']['id'];
-                ?>
-
-                    <div class="item text-center elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="item__image">
-                            <?php
-                            if ( $imageId ) :
-                                echo wp_get_attachment_image( $item['list_image']['id'], array('150', '150') );
-                            else:
-                            ?>
-                                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="item__content">
-                            <div class="desc">
-                                <?php echo wp_kses_post( $item['list_description'] ) ?>
+            <div class="item">
+                <div class="main-slider swiper-container">
+                    <div class="swiper-wrapper">
+                        <?php foreach ( $settings['gallery'] as $image  ): ?>
+                            <div class="swiper-slide">
+                                <?php echo wp_get_attachment_image( $image['id'], 'large' ); ?>
                             </div>
-
-                            <div class="name">
-                                <?php echo esc_html( $item['list_title'] ); ?>
-                            </div>
-
-                            <div class="position">
-                                <?php echo esc_html( $item['list_position'] ); ?>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
+                </div>
 
-                <?php endforeach; ?>
+            </div>
+
+            <div class="item">
+                <div class="thumb-slider swiper-container">
+                    <div class="swiper-wrapper">
+                        <?php foreach ( $settings['gallery'] as $image  ): ?>
+                            <div class="swiper-slide">
+                                <?php echo wp_get_attachment_image( $image['id'], 'medium' ); ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
             </div>
         </div>
 
