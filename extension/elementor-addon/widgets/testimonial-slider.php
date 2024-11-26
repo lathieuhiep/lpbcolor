@@ -53,33 +53,27 @@ class lpbcolor_Elementor_Testimonial_Slider extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
+
+        if ( empty( $settings['gallery']) ) {
+            return;
+        }
     ?>
 
         <div class="element-testimonial-slider">
-            <div class="item">
-                <div class="main-slider swiper-container">
-                    <div class="swiper-wrapper">
-                        <?php foreach ( $settings['gallery'] as $image  ): ?>
-                            <div class="swiper-slide">
-                                <?php echo wp_get_attachment_image( $image['id'], 'large' ); ?>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+            <div class="item featured">
+                <div class="featured-container">
+                    <img src="<?php echo esc_url( wp_get_attachment_image_url( $settings['gallery'][0]['id'], 'large' ) ) ?>" alt="" class="featured-image">
                 </div>
-
             </div>
 
-            <div class="item">
-                <div class="thumb-slider swiper-container">
-                    <div class="swiper-wrapper">
-                        <?php foreach ( $settings['gallery'] as $image  ): ?>
-                            <div class="swiper-slide">
-                                <?php echo wp_get_attachment_image( $image['id'], 'medium' ); ?>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+            <div class="item thumbnails">
+                <div class="thumbnail-container">
+                    <?php foreach ( $settings['gallery'] as $image  ): ?>
+                        <div class="thumbnail" data-featured-image="<?php echo esc_url( wp_get_attachment_image_url($image['id'], 'full') ); ?>">
+                            <?php echo wp_get_attachment_image( $image['id'], 'medium_large', '', ["class" => "thumbnail-image"] ); ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-
             </div>
         </div>
 

@@ -36,26 +36,31 @@
         $(document).general_owlCarousel_custom(element_slides)
     };
     
-    let ElementTestimonialSlider = function ($scope, $) {
-        const mainSlider = $scope.find('.main-slider')
-        const thumbSlider = $scope.find('.thumb-slider')
-console.log(mainSlider)
-        if ( mainSlider.length && thumbSlider.length ) {
-            const mainSwiper = new Swiper(".main-slider", {
-                slidesPerView: 1
-            })
+    const ElementTestimonialSlider = function ($scope, $) {
+        const thumbnail = $scope.find('.element-testimonial-slider .thumbnail')
+        const featuredImage = $scope.find('.element-testimonial-slider .featured-image')
 
-            const thumbSwiper = new Swiper(".thumb-slider", {
-                slidesPerView: 2,
-                direction: 'vertical',
-                mousewheel: true,
-                freeMode: true,
-                watchSlidesProgress: true,
-            })
+        thumbnail.on('click', function () {
+            const newImageSrc  = $(this).data('featured-image')
 
-            mainSwiper.controller.control = thumbSwiper;
-            thumbSwiper.controller.control = mainSwiper;
-        }
+            if (featuredImage.length && newImageSrc) {
+                // Xóa class active của tất cả các ảnh thumbnail
+                thumbnail.removeClass('active');
+
+                // Thêm class active vào ảnh thumbnail hiện tại
+                $(this).addClass('active');
+
+                featuredImage.fadeOut(300, function () {
+                    // Sau khi ảnh hiện tại ẩn đi, đổi src
+                    featuredImage.attr('src', newImageSrc);
+
+                    // Sau đó làm ảnh mới hiện lên với hiệu ứng fade-in
+                    featuredImage.fadeIn(300);
+                });
+            }
+
+            console.log('Changed featured image to:', newImageSrc);
+        })
     }
 
     $(window).on('elementor/frontend/init', function () {
