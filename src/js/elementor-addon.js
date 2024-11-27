@@ -36,7 +36,7 @@
         $(document).general_owlCarousel_custom(element_slides)
     };
     
-    const ElementTestimonialSlider = function ($scope, $) {
+    const elementTestimonialSlider = ($scope, $) => {
         const thumbnail = $scope.find('.element-testimonial-slider .thumbnail')
         const featuredImage = $scope.find('.element-testimonial-slider .featured-image')
 
@@ -58,9 +58,81 @@
                     featuredImage.fadeIn(300);
                 });
             }
-
-            console.log('Changed featured image to:', newImageSrc);
         })
+    }
+
+    const elementCountdownTimer = ($scope, $) => {
+        const countdownTimer = $scope.find('.element-countdown-timer')
+
+        if ( countdownTimer.length ) {
+            // value
+            const timeUnit =  countdownTimer.data('time-unit')
+            const timeValue =  parseInt( countdownTimer.data('time-value') )
+            let targetTime = parseInt( countdownTimer.data('target-time') )
+
+            // selector
+            const daysSelector = countdownTimer.find('.val-days')
+            const hoursSelector = countdownTimer.find('.val-hours')
+            const minutesSelector = countdownTimer.find('.val-minutes')
+            const secondsSelector = countdownTimer.find('.val-seconds')
+
+            // function reset target time
+            const resetTargetTime = () => {
+                let timeInSeconds;
+
+                if (timeUnit === 'days') {
+                    timeInSeconds = timeValue * 60 * 60 * 24;
+                } else if (timeUnit === 'hours') {
+                    timeInSeconds = timeValue * 60 * 60;
+                } else if (timeUnit === 'minutes') {
+                    timeInSeconds = timeValue * 60;
+                }
+
+                targetTime = Math.floor(new Date().getTime() / 1000) + timeInSeconds
+            }
+
+            // function update countdown
+            const updateCountdown = () => {
+                const now = Math.floor(new Date().getTime() / 1000)
+                let distance = targetTime - now
+
+                if ( distance <= 0 ) {
+                    resetTargetTime()
+
+                    daysSelector.text("00");
+                    hoursSelector.text("00");
+                    minutesSelector.text("00");
+                    secondsSelector.text("00");
+                }
+
+                // Calculate remaining time (days, hours, minutes, seconds)
+                let days = Math.floor(distance / (60 * 60 * 24));  // convert seconds to days
+                let hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));  // convert remaining seconds to hours
+                let minutes = Math.floor((distance % (60 * 60)) / 60);  // convert remaining seconds to minutes
+                let seconds = Math.floor(distance % 60);  // remaining seconds
+
+                // Always have 2 digits
+                days = String(days).padStart(2, '0');
+                hours = String(hours).padStart(2, '0');
+                minutes = String(minutes).padStart(2, '0');
+                seconds = String(seconds).padStart(2, '0');
+
+                // Update values
+                if (timeUnit === "days") {
+                    daysSelector.text(days)
+                }
+
+                if (timeUnit !== "minutes") {
+                    hoursSelector.text(hours)
+                }
+
+                minutesSelector.text(minutes)
+                secondsSelector.text(seconds)
+            }
+
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
+        }
     }
 
     $(window).on('elementor/frontend/init', function () {
@@ -78,7 +150,10 @@
         elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-image-carousel.default', elementImageSlider);
 
         /* Element testimonial slider */
-        elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-testimonial-slider.default', ElementTestimonialSlider);
+        elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-testimonial-slider.default', elementTestimonialSlider);
+
+        /* Element countdown timer */
+        elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-countdown-timer.default', elementCountdownTimer);
     });
 
 })(jQuery);

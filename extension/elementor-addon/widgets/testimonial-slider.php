@@ -5,7 +5,7 @@ use Elementor\Controls_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class lpbcolor_Elementor_Testimonial_Slider extends Widget_Base {
+class LPBColor_Elementor_Testimonial_Slider extends Widget_Base {
     public function get_categories(): array {
         return array( 'my-theme' );
     }
@@ -20,11 +20,6 @@ class lpbcolor_Elementor_Testimonial_Slider extends Widget_Base {
 
     public function get_icon(): string {
         return 'eicon-user-circle-o';
-    }
-
-    public function get_style_depends()
-    {
-        return ['e-swiper'];
     }
 
     protected function register_controls(): void {
@@ -70,7 +65,7 @@ class lpbcolor_Elementor_Testimonial_Slider extends Widget_Base {
                 <div class="thumbnail-container">
                     <?php foreach ( $settings['gallery'] as $image  ): ?>
                         <div class="thumbnail" data-featured-image="<?php echo esc_url( wp_get_attachment_image_url($image['id'], 'full') ); ?>">
-                            <?php echo wp_get_attachment_image( $image['id'], 'medium_large', '', ["class" => "thumbnail-image"] ); ?>
+                            <?php echo wp_get_attachment_image( $image['id'], 'medium', '', ['class' => 'thumbnail-image'] ); ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
