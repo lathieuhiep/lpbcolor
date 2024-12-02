@@ -70,39 +70,35 @@ class LPBColor_Elementor_Countdown_Timer extends Widget_Base {
         if ( $time_value <= 0 ) {
             return;
         }
-
-        $target_time = strtotime("+$time_value $time_unit");
     ?>
         <div class="element-countdown-timer"
              data-time-value="<?php echo esc_attr( $time_value ); ?>"
              data-time-unit="<?php echo esc_attr( $time_unit ); ?>"
-             data-target-time="<?php echo esc_attr( $target_time ); ?>"
         >
             <?php if ($time_unit == 'days'): ?>
                 <div class="countdown-time days">
-                    <span class="val-days">00</span>
+                    <span class="val val-days">00</span>
                     <span class="txt"><?php esc_html_e('Ngày', 'lpbcolor'); ?></span>
                 </div>
             <?php endif; ?>
 
             <?php if ($time_unit != 'minutes'): ?>
                 <div class="countdown-time hours">
-                    <span class="val-hours">00</span>
+                    <span class="val val-hours">00</span>
                     <span class="txt"><?php esc_html_e('Giờ', 'lpbcolor'); ?></span>
                 </div>
             <?php endif; ?>
 
             <div class="countdown-time minutes">
-                <span class="val-minutes">00</span>
+                <span class="val val-minutes">00</span>
                 <span class="txt"><?php esc_html_e('Phút', 'lpbcolor'); ?></span>
             </div>
 
             <div class="countdown-time seconds">
-                <span class="val-seconds">00</span>
+                <span class="val val-seconds">00</span>
                 <span class="txt"><?php esc_html_e('Giây', 'lpbcolor'); ?></span>
             </div>
         </div>
-
-        <?php
+    <?php
     }
 }

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-class lpbcolor_Elementor_Contact_Form_7 extends Widget_Base {
+class LPBColor_Elementor_Contact_Form_7 extends Widget_Base {
 
 	public function get_categories(): array {
 		return array( 'my-theme' );

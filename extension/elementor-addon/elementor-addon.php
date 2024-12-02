@@ -32,6 +32,7 @@ add_action( 'elementor/widgets/register', 'lpbcolor_register_widget_elementor_ad
 function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/button-theme.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/countdown-timer.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-blocks.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-media-info-box.php' );
@@ -46,11 +47,12 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/carousel-images.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-box.php' );
 
 	// register add on
     $widgets_manager->register( new \LPBColor_Elementor_Button() );
+    $widgets_manager->register( new \lpbcolor_Elementor_Contact_Form_7() );
     $widgets_manager->register( new \LPBColor_Elementor_Countdown_Timer() );
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Blocks() );
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Media_Info_Box() );
@@ -64,7 +66,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 //	$widgets_manager->register( new \lpbcolor_Elementor_Post_Grid() );
 
 //	$widgets_manager->register( new \lpbcolor_Elementor_Carousel_Images() );
-//	$widgets_manager->register( new \lpbcolor_Elementor_Contact_Form_7() );
+
 //	$widgets_manager->register( new \lpbcolor_Elementor_Info_Box() );
 }
 

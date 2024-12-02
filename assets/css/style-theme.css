@@ -11,10 +11,13 @@
   --lp-bcolor-color-secondary: #FFD600;
   --lp-bcolor-color-tertiary: #00A77F;
   --lp-bcolor-color-quaternary: #262626;
+  --lp-bcolor-color-scenery: #1E293F;
+  --lp-bcolor-color-septenary: #96B3FF;
   --lp-bcolor-color-white: #ffffff;
   --lp-bcolor-color-black: #000000;
   --lp-bcolor-hover-color: #FFD600;
   --lp-bcolor-required-color: #ff5555;
+  --lp-bcolor-font-weight-300: 300;
   --lp-bcolor-font-weight-400: 400;
   --lp-bcolor-font-weight-500: 500;
   --lp-bcolor-font-weight-600: 600;
@@ -40,6 +43,10 @@ body {
   word-break: break-word;
   display: flex;
   flex-direction: column;
+}
+
+.fw-300 {
+  font-weight: 300;
 }
 
 .fw-400 {
@@ -177,6 +184,16 @@ pre {
 .theme-color-quaternary {
   --color-quaternary: var(--lp-bcolor-color-quaternary);
   color: var(--color-quaternary);
+}
+
+.theme-color-scenery {
+  --color-scenery: var(--lp-bcolor-color-scenery);
+  color: var(--color-scenery);
+}
+
+.theme-color-septenary {
+  --color-septenary: var(--lp-bcolor-color-septenary);
+  color: var(--color-septenary);
 }
 
 .theme-color-white {
@@ -779,6 +796,9 @@ section.widget .recent-post-widget__list .meta i.fa {
   border-bottom: 1px solid var(--lp-bcolor-color-primary);
 }
 
+form.wpcf7-form br {
+  display: none;
+}
 form.wpcf7-form p {
   position: relative;
   margin: 0;
@@ -788,8 +808,9 @@ form.wpcf7-form p span.ajax-loader {
   top: 8px;
 }
 form.wpcf7-form label {
+  --margin-label: 0 0 1.6rem;
   display: block;
-  margin-bottom: 15px;
+  margin: var(--margin-label);
   font-weight: 500;
 }
 form.wpcf7-form span.required {
@@ -821,8 +842,155 @@ form.wpcf7-form .wpcf7-submit {
   padding: 5px 25px;
   border: none;
   cursor: pointer;
-  text-transform: uppercase;
   background: #000000;
+}
+form.wpcf7-form .consulting-cf7 {
+  position: relative;
+  padding: 2.5rem 3rem;
+  max-width: 68.2rem;
+  margin: 0 auto;
+  color: #96B3FF;
+  border: 0.2rem solid #1C3563;
+  border-radius: 2.4rem;
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2509803922);
+}
+form.wpcf7-form .consulting-cf7:before {
+  position: absolute;
+  content: "";
+  width: 12.6rem;
+  height: 12.6rem;
+  top: -5rem;
+  left: -7.7rem;
+  background-image: url("../images/hearth.webp");
+  background-size: contain;
+  background-repeat: repeat;
+}
+@media (max-width: 991px) {
+  form.wpcf7-form .consulting-cf7:before {
+    display: none;
+  }
+}
+form.wpcf7-form .consulting-cf7 .grid {
+  display: grid;
+  gap: 2.4rem 6rem;
+}
+@media (min-width: 768px) {
+  form.wpcf7-form .consulting-cf7 .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+form.wpcf7-form .consulting-cf7 label {
+  margin-bottom: 0.8rem;
+}
+form.wpcf7-form .consulting-cf7 p + p {
+  margin-top: 2rem;
+}
+form.wpcf7-form .consulting-cf7 .title-label {
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  color: inherit;
+  font-weight: var(--lp-bcolor-font-weight-500);
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control-wrap {
+  margin-bottom: 0;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control-wrap textarea {
+  height: 6.4rem;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control:not(.wpcf7-checkbox, .wpcf7-submit) {
+  padding: 1.2rem 1.6rem;
+  color: rgba(197, 213, 255, 0.4392156863);
+  border: 1px solid #96B3FF;
+  border-radius: 0.8rem;
+  background-color: transparent;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 480px) {
+  form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item {
+  margin: 0;
+  display: flex;
+  gap: 1.2rem;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item input {
+  position: relative;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+  width: 1.6rem;
+  height: 1.6rem;
+  transform: translateY(0.4rem);
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item input:checked ~ .wpcf7-list-item-label:before {
+  background-color: #3366FF;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item input:checked ~ .wpcf7-list-item-label:after {
+  opacity: 1;
+  visibility: visible;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
+  position: relative;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label:before {
+  position: absolute;
+  content: "";
+  top: 0.4rem;
+  left: -2.6rem;
+  border: 0.1rem solid #3366FF;
+  border-radius: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+form.wpcf7-form .consulting-cf7 .wpcf7-form-control.wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label:after {
+  position: absolute;
+  content: "\f00c";
+  left: -2.3rem;
+  top: 0.5rem;
+  font-size: 12px;
+  line-height: 1.6rem;
+  color: var(--lp-bcolor-color-white);
+  font-weight: 900;
+  font-family: "Font Awesome 6 Free", serif;
+  opacity: 0;
+  visibility: hidden;
+}
+form.wpcf7-form .consulting-cf7 .form-group-check ~ .form-group-check {
+  margin-top: 3rem;
+}
+form.wpcf7-form .consulting-cf7 .submit-form {
+  margin-top: 3rem;
+  text-align: center;
+}
+form.wpcf7-form .consulting-cf7 .submit-form p {
+  position: relative;
+  display: inline-block;
+}
+form.wpcf7-form .consulting-cf7 .submit-form .wpcf7-submit {
+  padding: 0.9rem 5.2rem 0.8rem 3rem;
+  border: 0.1rem solid #96B3FF;
+  border-radius: 0.8rem;
+  background-color: #3366FF;
+  overflow: hidden;
+}
+form.wpcf7-form .consulting-cf7 .submit-form .wpcf7-spinner {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+form.wpcf7-form .consulting-cf7 .submit-form i {
+  position: absolute;
+  top: 50%;
+  right: 2.8rem;
+  color: var(--lp-bcolor-color-white);
+  transform: translateY(-50%);
 }
 
 .comments-area {

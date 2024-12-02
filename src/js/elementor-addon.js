@@ -62,78 +62,80 @@
     }
 
     const elementCountdownTimer = ($scope, $) => {
-        const countdownTimer = $scope.find('.element-countdown-timer')
+        const countdownTimer = $scope.find('.element-countdown-timer');
 
-        if ( countdownTimer.length ) {
-            // value
-            const timeUnit =  countdownTimer.data('time-unit')
-            const timeValue =  parseInt( countdownTimer.data('time-value') )
-            let targetTime = parseInt( countdownTimer.data('target-time') )
+        if (countdownTimer.length) {
+            const timeUnit = countdownTimer.data('time-unit');
+            const timeValue = parseInt(countdownTimer.data('time-value')) - 1;
+            let targetTime = Math.floor(new Date().getTime() / 1000);
 
-            // selector
-            const daysSelector = countdownTimer.find('.val-days')
-            const hoursSelector = countdownTimer.find('.val-hours')
-            const minutesSelector = countdownTimer.find('.val-minutes')
-            const secondsSelector = countdownTimer.find('.val-seconds')
+            // Selector
+            const daysSelector = countdownTimer.find('.val-days');
+            const hoursSelector = countdownTimer.find('.val-hours');
+            const minutesSelector = countdownTimer.find('.val-minutes');
+            const secondsSelector = countdownTimer.find('.val-seconds');
 
-            // function reset target time
-            const resetTargetTime = () => {
+            // Function to calculate target time based on time unit
+            const calculateTargetTime = () => {
+                const currentTime = new Date();
                 let timeInSeconds;
 
                 if (timeUnit === 'days') {
-                    timeInSeconds = timeValue * 60 * 60 * 24;
+                    currentTime.setDate(currentTime.getDate() + timeValue);
+                    currentTime.setHours(23, 59, 59, 999);
+                    timeInSeconds = Math.floor(currentTime.getTime() / 1000);
                 } else if (timeUnit === 'hours') {
-                    timeInSeconds = timeValue * 60 * 60;
+                    currentTime.setHours(currentTime.getHours() + timeValue);
+                    currentTime.setMinutes(59, 59, 999);
+                    timeInSeconds = Math.floor(currentTime.getTime() / 1000);
                 } else if (timeUnit === 'minutes') {
-                    timeInSeconds = timeValue * 60;
+                    currentTime.setMinutes(currentTime.getMinutes() + timeValue);
+                    currentTime.setSeconds(59, 999);
+                    timeInSeconds = Math.floor(currentTime.getTime() / 1000);
                 }
 
-                targetTime = Math.floor(new Date().getTime() / 1000) + timeInSeconds
-            }
+                return timeInSeconds;
+            };
 
-            // function update countdown
+            // Function to update countdown
             const updateCountdown = () => {
-                const now = Math.floor(new Date().getTime() / 1000)
-                let distance = targetTime - now
+                const now = Math.floor(new Date().getTime() / 1000);
+                let distance = targetTime - now;
 
-                if ( distance <= 0 ) {
-                    resetTargetTime()
+                if (distance <= 0) {
+                    targetTime = calculateTargetTime(); // Reset lại targetTime
+                    distance = targetTime - now; // Tính lại khoảng cách mới
 
+                    // Reset giao diện về "00"
                     daysSelector.text("00");
                     hoursSelector.text("00");
                     minutesSelector.text("00");
                     secondsSelector.text("00");
                 }
 
-                // Calculate remaining time (days, hours, minutes, seconds)
-                let days = Math.floor(distance / (60 * 60 * 24));  // convert seconds to days
-                let hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));  // convert remaining seconds to hours
-                let minutes = Math.floor((distance % (60 * 60)) / 60);  // convert remaining seconds to minutes
-                let seconds = Math.floor(distance % 60);  // remaining seconds
+                // Tính toán thời gian còn lại
+                const days = String(Math.floor(distance / (60 * 60 * 24))).padStart(2, '0');
+                const hours = String(Math.floor((distance % (60 * 60 * 24)) / (60 * 60))).padStart(2, '0');
+                const minutes = String(Math.floor((distance % (60 * 60)) / 60)).padStart(2, '0');
+                const seconds = String(distance % 60).padStart(2, '0');
 
-                // Always have 2 digits
-                days = String(days).padStart(2, '0');
-                hours = String(hours).padStart(2, '0');
-                minutes = String(minutes).padStart(2, '0');
-                seconds = String(seconds).padStart(2, '0');
+                // Cập nhật giao diện
+                daysSelector.text(days);
+                hoursSelector.text(hours);
+                minutesSelector.text(minutes);
+                secondsSelector.text(seconds);
+            };
 
-                // Update values
-                if (timeUnit === "days") {
-                    daysSelector.text(days)
-                }
+            // Tính toán targetTime lần đầu tiên
+            targetTime = calculateTargetTime();
 
-                if (timeUnit !== "minutes") {
-                    hoursSelector.text(hours)
-                }
+            // Cập nhật countdown ngay lập tức trước khi bắt đầu chu kỳ
+            updateCountdown();
 
-                minutesSelector.text(minutes)
-                secondsSelector.text(seconds)
-            }
-
-            // Update countdown every second
+            // Cập nhật countdown mỗi giây
             setInterval(updateCountdown, 1000);
         }
-    }
+    };
 
     $(window).on('elementor/frontend/init', function () {
         // /* Element slider */

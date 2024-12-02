@@ -13,6 +13,8 @@ $color-primary: #292D4D;
 $color-secondary: #FFD600;
 $color-tertiary: #00A77F;
 $color-quaternary: #262626;
+$color-scenery: #1E293F;
+$color-septenary: #96B3FF;
 
 $color-white: #ffffff;
 $color-black: #000000;
@@ -22,6 +24,8 @@ $theme-colors: (
         secondary: $color-secondary,
         tertiary: $color-tertiary,
         quaternary: $color-quaternary,
+        scenery: $color-scenery,
+        septenary: $color-septenary,
         white: $color-white,
         black: $color-black
 );
@@ -34,7 +38,7 @@ $required-color: #ff5555;
 $font-family-base: 'Inter', sans-serif;
 
 // Font weights
-$font-weights: 400, 500, 600, 700, 900;
+$font-weights: 300, 400, 500, 600, 700, 900;
 
 // FontAwesome
 $font-awesome-free: 'Font Awesome 6 Free';

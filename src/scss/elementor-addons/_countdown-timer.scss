@@ -1,3 +1,95 @@
 @use "../abstracts/abstracts" as *;
 
-.element-countdown-timer {}
+$image-path: "../images/";
+
+.element-countdown-timer {
+  position: relative;
+  margin: 0 auto;
+  max-width: 68.2rem;
+  color: var( --#{$prefix-my-theme}color-septenary );
+  border: .142rem solid #2F3A4E;
+  border-radius: 3.4rem;
+  box-shadow: 0 .569rem .569rem 0 #00000040;
+  background-color: var( --#{$prefix-my-theme}color-scenery );
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (min-width: 768px) {
+    padding: 2.8rem 5.6rem;
+    gap: 8.8rem;
+  }
+
+  @media (max-width: 767px) {
+    padding: 2.4rem;
+    gap: 3rem;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    @include square(19.3rem);
+    top: -9rem;
+    right: -9rem;
+    background-image: url("#{$image-path}flash.webp");
+    background-size: contain;
+    background-repeat: repeat;
+    transform: rotate(20deg);
+
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+
+  .countdown-time {
+    position: relative;
+    display: grid;
+    gap: 1.7rem;
+
+    ~ .countdown-time {
+      &:before,
+      &:after {
+        position: absolute;
+        content: "";
+        @include square(.6rem, 50%);
+        background-color: var( --#{$prefix-my-theme}color-septenary );
+
+        @media (min-width: 768px) {
+          left: -5rem;
+        }
+
+        @media (max-width: 767px) {
+          left: -2rem;
+        }
+      }
+
+      &:before {
+        top: 45%;
+      }
+
+      &:after {
+        bottom: 30%;
+      }
+    }
+
+    span {
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
+
+  .val {
+    @media (min-width: 576px) {
+      font-size: 4.6rem;
+    }
+
+    @media (max-width: 575px) {
+      font-size: 3.2rem;
+    }
+  }
+
+  .txt {
+    font-size: 1.7rem;
+    font-weight: var(--#{$prefix-my-theme}font-weight-300);
+  }
+}
