@@ -38,6 +38,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/grid-media-info-box.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-carousel.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-card.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/table-press.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 
 
@@ -52,12 +53,13 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 
 	// register add on
     $widgets_manager->register( new \LPBColor_Elementor_Button() );
-    $widgets_manager->register( new \lpbcolor_Elementor_Contact_Form_7() );
+    $widgets_manager->register( new \LPBColor_Elementor_Contact_Form_7() );
     $widgets_manager->register( new \LPBColor_Elementor_Countdown_Timer() );
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Blocks() );
     $widgets_manager->register( new \LPBColor_Elementor_Grid_Media_Info_Box() );
     $widgets_manager->register( new \LPBColor_Elementor_Image_Carousel() );
     $widgets_manager->register( new \LPBColor_Elementor_Info_Card() );
+    $widgets_manager->register( new \LPBColor_Elementor_Table_Press() );
     $widgets_manager->register( new \LPBColor_Elementor_Testimonial_Slider() );
 
 //	$widgets_manager->register( new \lpbcolor_Elementor_Slides() );
