@@ -71,7 +71,9 @@ class LPBColor_Elementor_Table_Press extends Widget_Base {
         $shortcode = do_shortcode( shortcode_unautop( $shortcode ) );
     ?>
         <div class="element-table-press">
-            <?php echo $shortcode; ?>
+            <div class="table-warp">
+                <?php echo $shortcode; ?>
+            </div>
         </div>
     <?php
 
