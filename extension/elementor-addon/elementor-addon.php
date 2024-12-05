@@ -39,6 +39,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-carousel.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-layered.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-card.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-grid-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 
 
@@ -60,6 +61,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \LPBColor_Elementor_Image_Carousel() );
     $widgets_manager->register( new \LPBColor_Elementor_Image_Layered() );
     $widgets_manager->register( new \LPBColor_Elementor_Info_Card() );
+    $widgets_manager->register( new \LPBColor_Elementor_Info_Grid_Slider() );
     $widgets_manager->register( new \LPBColor_Elementor_Testimonial_Slider() );
 
 //	$widgets_manager->register( new \lpbcolor_Elementor_Slides() );

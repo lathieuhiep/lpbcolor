@@ -15,6 +15,48 @@
         return $.extend(defaults, options)
     }
 
+    // element info grid slider
+    const elementInfoGridSlider = ($scope, $) => {
+        const infoGridSlider = $scope.find('.element-info-grid-slider')
+        const slider = infoGridSlider.find('.feature-image')
+        const thumbnail = infoGridSlider.find('.thumbnail')
+
+        if (slider.length) {
+            const options = {
+                items: 1,
+                nav: false,
+                dots: false,
+                margin: 12
+            }
+
+            slider.owlCarousel(owlCarouselElementorOptions(options))
+
+            // Thêm sự kiện click cho thumbnail
+            thumbnail.on("click", function () {
+                const index = $(this).data("index")
+
+                slider.trigger("to.owl.carousel", [index, 300]);
+
+                slider.removeClass("active");
+                $(this).addClass("active");
+            });
+
+            // Đồng bộ trạng thái thumbnail khi slider thay đổi
+            slider.on("changed.owl.carousel", function (event) {
+                let currentIndex = event.item.index - event.relatedTarget._clones.length / 2;
+
+                // Nếu index bị âm, chỉnh lại
+                if (currentIndex < 0) {
+                    currentIndex = event.relatedTarget._items.length + currentIndex;
+                }
+
+                // Thêm class active cho thumbnail tương ứng
+                thumbnail.removeClass("active");
+                thumbnail.eq(currentIndex % $(".thumbnail").length).addClass("active");
+            });
+        }
+    }
+
     // element image slider
     const elementImageSlider = ($scope, $) => {
         const slider = $scope.find('.element-image-carousel')
@@ -61,6 +103,7 @@
         })
     }
 
+    // countdown timer
     const elementCountdownTimer = ($scope, $) => {
         const countdownTimer = $scope.find('.element-countdown-timer');
 
@@ -147,6 +190,9 @@
 
         // /* Element carousel images */
         // elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-carousel-images.default', ElementCarouselSlider);
+
+        // element info grid slider
+        elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-info-grid-slider.default', elementInfoGridSlider);
 
         // element image slider
         elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-image-carousel.default', elementImageSlider);
