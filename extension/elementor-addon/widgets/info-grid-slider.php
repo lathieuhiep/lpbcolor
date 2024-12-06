@@ -217,6 +217,18 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'image_box_order',
+            [
+                'label' => esc_html__('Đổi vị trí', 'lpbcolor'),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => esc_html__('Có', 'lpbcolor'),
+                'label_off' => esc_html__('Không', 'lpbcolor'),
+                'return_value' => 'yes',
+            ]
+        );
+
         $this->end_controls_section();
 
         // title style
@@ -293,10 +305,12 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $galleries = $settings['gallery'];
-        ?>
+        $image_box_order = $settings['image_box_order'];
+
+    ?>
         <div class="element-info-grid-slider">
-            <div class="row">
-                <div class="col-12 col-md-6">
+            <div class="row row-gap-3">
+                <div class="col-12 col-md-6 <?php echo esc_attr( $image_box_order == 'yes' ? 'order-2 right-box' : 'order-2 order-md-1 left-box' ); ?>">
                     <div class="feature-image owl-carousel owl-theme">
                         <?php
                         if ( $galleries ) :
@@ -312,13 +326,13 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 order-1">
                     <div class="body">
                         <h4 class="title">
                             <?php echo esc_html( $settings['title'] ); ?>
                         </h4>
 
-                        <div class="content">
+                        <div class="content text-justify">
                             <?php echo wpautop( $settings['description'] ); ?>
                         </div>
                     </div>
@@ -327,11 +341,11 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
                         <?php
                         if ( $galleries ) :
                             foreach ( $galleries as $index => $gallery ) :
-                        ?>
-                            <div class="thumbnail" data-index="<?php echo esc_attr( $index ); ?>">
-                                <?php echo wp_get_attachment_image( $gallery['id'], 'medium' ); ?>
-                            </div>
-                        <?php
+                                ?>
+                                <div class="thumbnail" data-index="<?php echo esc_attr( $index ); ?>">
+                                    <?php echo wp_get_attachment_image( $gallery['id'], 'medium' ); ?>
+                                </div>
+                            <?php
                             endforeach;
                         endif;
                         ?>

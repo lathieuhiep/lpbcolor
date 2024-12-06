@@ -29,31 +29,33 @@
                 margin: 12
             }
 
-            slider.owlCarousel(owlCarouselElementorOptions(options))
+            const mainSlider = slider.owlCarousel(owlCarouselElementorOptions(options));
 
-            // Thêm sự kiện click cho thumbnail
+            // Cập nhật class active cho thumbnail
+            function updateThumbnails(currentIndex) {
+                thumbnail.removeClass("active")
+                thumbnail.eq(currentIndex).addClass("active")
+            }
+
+            // Khi slide chính thay đổi
+            mainSlider.on("changed.owl.carousel", function (event) {
+                let currentIndex = event.item.index - event.relatedTarget._clones.length / 2
+                const totalItems = event.item.count
+
+                currentIndex = (currentIndex + totalItems) % totalItems;
+                updateThumbnails(currentIndex)
+            })
+
+            // Khi click vào thumbnail
             thumbnail.on("click", function () {
-                const index = $(this).data("index")
+                const slideIndex = $(this).index()
 
-                slider.trigger("to.owl.carousel", [index, 300]);
-
-                slider.removeClass("active");
-                $(this).addClass("active");
+                mainSlider.trigger("to.owl.carousel", [slideIndex, 800])
+                updateThumbnails(slideIndex)
             });
 
-            // Đồng bộ trạng thái thumbnail khi slider thay đổi
-            slider.on("changed.owl.carousel", function (event) {
-                let currentIndex = event.item.index - event.relatedTarget._clones.length / 2;
-
-                // Nếu index bị âm, chỉnh lại
-                if (currentIndex < 0) {
-                    currentIndex = event.relatedTarget._items.length + currentIndex;
-                }
-
-                // Thêm class active cho thumbnail tương ứng
-                thumbnail.removeClass("active");
-                thumbnail.eq(currentIndex % $(".thumbnail").length).addClass("active");
-            });
+            // Đặt active ban đầu cho thumbnail đầu tiên
+            updateThumbnails(0);
         }
     }
 

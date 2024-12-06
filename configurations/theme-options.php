@@ -232,67 +232,103 @@ if ( class_exists( 'CSF' ) ) {
 	// footer columns
 	CSF::createSection( $lpbcolor_prefix, array(
 		'parent' => 'opt_footer_section',
-		'title'  => esc_html__( 'Columns Sidebar', 'lpbcolor' ),
+		'title'  => esc_html__( 'Columns', 'lpbcolor' ),
 		'fields' => array(
-			// select columns
-			array(
-				'id'      => 'opt_footer_columns',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Number of footer columns', 'lpbcolor' ),
-				'options' => array(
-					'0' => esc_html__( 'Hide', 'lpbcolor' ),
-					'1' => 1,
-					'2' => 2,
-					'3' => 3,
-					'4' => 4,
-				),
-				'default' => '4'
-			),
+            array(
+                'id'     => 'opt_footer_introduce',
+                'type'   => 'fieldset',
+                'title'  => esc_html__( 'Giới thiệu', 'lpbcolor' ),
+                'fields' => array(
+                    array(
+                        'id'      => 'logo',
+                        'type'    => 'media',
+                        'title'   => esc_html__( 'Upload Image Logo', 'lpbcolor' ),
+                        'library' => 'image',
+                        'url'     => false
+                    ),
 
-			// column width 1
-			array(
-				'id'         => 'opt_footer_column_width_1',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 1', 'lpbcolor' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', '!=', '0' )
-			),
+                    array(
+                        'id'    => 'heading',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Tiêu đề', 'lpbcolor' ),
+                        'default' => esc_html__('CÔNG TY CỔ PHẦN SƠN BEECOLOR VIỆT NAM', 'lpbcolor')
+                    ),
 
-			// column width 2
-			array(
-				'id'         => 'opt_footer_column_width_2',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 2', 'lpbcolor' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1' )
-			),
+                    array(
+                        'id'    => 'sub_heading',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Tiêu đề phụ', 'lpbcolor' ),
+                        'default' => esc_html__('Hải Âu 16-89, Vinhomes Ocean Park, Gia Lâm, Hà Nội', 'lpbcolor')
+                    ),
+                ),
+            ),
 
-			// column width 3
-			array(
-				'id'         => 'opt_footer_column_width_3',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 3', 'lpbcolor' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
-			),
+            array(
+                'id'     => 'opt_footer_contact',
+                'type'   => 'fieldset',
+                'title'  => esc_html__( 'Liên hệ', 'lpbcolor' ),
+                'fields' => array(
+                    array(
+                        'id'     => 'phone_list',
+                        'type'   => 'repeater',
+                        'title'  => esc_html__( 'Danh sách số điện thoại', 'lpbcolor' ),
+                        'fields' => array(
+                            array(
+                                'id'    => 'number',
+                                'type'  => 'text',
+                                'title' => '',
+                            ),
+                        ),
+                    ),
 
-			// column width 4
-			array(
-				'id'         => 'opt_footer_column_width_4',
-				'type'       => 'slider',
-				'title'      => esc_html__( 'Column width 4', 'lpbcolor' ),
-				'default'    => 3,
-				'min'        => 1,
-				'max'        => 12,
-				'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2,3' )
-			),
-		)
+                    array(
+                        'id'    => 'link_website',
+                        'type'  => 'link',
+                        'title' => esc_html__( 'Địa chỉ website', 'lpbcolor' ),
+                        'default'  => array(
+                            'url'    => 'bcolor.vn',
+                            'text'   => 'www.bcolor.vn',
+                            'target' => '_blank'
+                        ),
+                    ),
+
+                    array(
+                        'id'    => 'address',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Địa chỉ', 'lpbcolor' ),
+                        'default' => esc_html__('Hải Âu 16-89, Vinhomes Ocean Park, Gia Lâm, Hà Nội', 'lpbcolor')
+                    ),
+                ),
+            ),
+
+            array(
+                'id'     => 'opt_footer_quick_link',
+                'type'   => 'fieldset',
+                'title'  => esc_html__( 'Liên kết nhanh', 'lpbcolor' ),
+                'fields' => array(
+                    array(
+                        'id'          => 'menus',
+                        'type'        => 'select',
+                        'title'       =>  esc_html__( 'Chọn menu', 'lpbcolor' ),
+                        'chosen'      => true,
+                        'multiple'    => true,
+                        'placeholder' =>  esc_html__( 'Chọn menu', 'lpbcolor' ),
+                        'options'     => 'menus'
+                    ),
+
+                    array(
+                        'id'    => 'link_tiktok',
+                        'type'  => 'link',
+                        'title' => esc_html__( 'Địa chỉ TikTok', 'lpbcolor' ),
+                        'default'  => array(
+                            'url'    => '#',
+                            'text'   => 'TikTok',
+                            'target' => '_blank'
+                        ),
+                    ),
+                ),
+            ),
+        )
 	) );
 
 	// Copyright

@@ -17,11 +17,6 @@ function lpbcolor_widget_registration($name, $id, $description = ''): void {
 
 function lpbcolor_multiple_widget_init(): void {
 	lpbcolor_widget_registration( esc_html__('Sidebar Main', 'lpbcolor'), 'sidebar-main' );
-
-	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 1', 'lpbcolor'), 'sidebar-footer-column-1' );
-	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 2', 'lpbcolor'), 'sidebar-footer-column-2' );
-	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 3', 'lpbcolor'), 'sidebar-footer-column-3' );
-	lpbcolor_widget_registration( esc_html__('Sidebar Footer Column 4', 'lpbcolor'), 'sidebar-footer-column-4' );
 }
 
 add_action('widgets_init', 'lpbcolor_multiple_widget_init');
