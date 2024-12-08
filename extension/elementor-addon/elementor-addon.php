@@ -31,6 +31,7 @@ function lpbcolor_image_size_options(): array
 add_action( 'elementor/widgets/register', 'lpbcolor_register_widget_elementor_addon' );
 function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/banner.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/button-theme.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/countdown-timer.php' );
@@ -53,6 +54,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-box.php' );
 
 	// register add on
+    $widgets_manager->register( new \LPBColor_Elementor_Banner() );
     $widgets_manager->register( new \LPBColor_Elementor_Button() );
     $widgets_manager->register( new \LPBColor_Elementor_Contact_Form_7() );
     $widgets_manager->register( new \LPBColor_Elementor_Countdown_Timer() );

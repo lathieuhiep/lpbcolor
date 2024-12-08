@@ -264,3 +264,14 @@ function lpbcolor_get_social_url(): void {
         endforeach;
     endif;
 }
+
+function lpbcolor_preg_replace_ony_number($string): string|null
+{
+    $number = '';
+
+    if (!empty( $string )) {
+        $number = preg_replace('/[^0-9]/', '', strip_tags( $string ) );
+    }
+
+    return $number;
+}

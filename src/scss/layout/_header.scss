@@ -364,13 +364,13 @@
   }
 }
 
-@media (min-width: 992px) {
-  .active-sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
+.active-sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
+@media (min-width: 992px) {
   .admin-bar {
     .active-sticky-nav {
       top: 32px;

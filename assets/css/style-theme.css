@@ -105,6 +105,12 @@ pre {
   flex: 1 0 auto;
 }
 
+.reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 #site-loading {
   position: fixed;
   top: 0;
@@ -609,12 +615,13 @@ form.post-password-form p input[type=submit] {
   }
 }
 
+.active-sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 @media (min-width: 992px) {
-  .active-sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
   .admin-bar .active-sticky-nav {
     top: 32px;
   }
@@ -780,12 +787,63 @@ section.widget .recent-post-widget__list .meta i.fa {
 }
 .global-footer__column {
   border-top: 1px solid var(--lp-bcolor-color-primary);
-  padding: 30px 0;
+  padding: 7.4rem 0 3rem;
 }
-.global-footer__bottom {
-  padding: 10px 0;
-  color: #ffffff;
-  background-color: var(--lp-bcolor-body-color);
+@media (max-width: 991px) {
+  .global-footer__column .introduce .heading {
+    font-size: 1.6rem;
+  }
+}
+.global-footer__column .contact__item {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 2.4rem auto;
+}
+.global-footer__column .contact__item .icon {
+  text-align: center;
+}
+.global-footer__column .contact__item .phones li {
+  position: relative;
+}
+.global-footer__column .contact__item .phones li ~ li::before {
+  position: absolute;
+  content: "";
+  width: 0.1rem;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: -0.7rem;
+  background-color: var(--lp-bcolor-color-primary);
+}
+.global-footer__column .menus ul li ~ li {
+  margin-top: 0.8rem;
+}
+.global-footer__column .tiktok-warp .link {
+  padding: var(--btn-padding, 0.5rem 1.2rem 0.5rem 0.4rem);
+  color: var(--lp-bcolor-color-white);
+  border-radius: var(--btn-border-radius, 6.8rem);
+  background-color: var(--btn-background, var(--lp-bcolor-color-primary));
+  transition: all 0.4s ease-in-out;
+}
+.global-footer__column .tiktok-warp .link .icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  font-size: 2.1rem;
+  color: var(--lp-bcolor-color-primary);
+  background-color: var(--lp-bcolor-color-white);
+}
+.global-footer__column .tiktok-warp .link .text {
+  line-height: 1;
+}
+.global-footer__column .tiktok-warp .link:hover {
+  --btn-background: var(--lp-bcolor-color-secondary);
+  color: var(--lp-bcolor-color-primary);
+}
+.global-footer__bottom .copyright {
+  padding: 3rem 0;
+  color: #92989F;
+  font-size: 1.2rem;
+  border-top: 0.1rem solid #71777D;
 }
 
 /**

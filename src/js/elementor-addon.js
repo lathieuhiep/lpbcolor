@@ -15,6 +15,44 @@
         return $.extend(defaults, options)
     }
 
+    // element banner slider
+    const elementBannerSlider = ($scope, $) => {
+        const slider = $scope.find('.element-banner__owl')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+                const options = {
+                    items: 5,
+                    nav: true,
+                    dots: false,
+                    margin: 12,
+                    navText: ['<i class="fa-solid fa-left-long"></i>','<i class="fa-solid fa-right-long"></i>'],
+                    responsive: {
+                        0: {
+                            items: 3,
+                            nav: false
+                        },
+                        576: {
+                            items: 4,
+                            nav: true
+                        },
+                        768: {
+                            items: 5
+                        },
+                    },
+                }
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+
+                // Theo dõi kích thước khối chứa thay đổi và cập nhật Owl Carousel
+                new ResizeObserver(() => {
+                    owl.trigger('refresh.owl.carousel'); // Làm mới Owl Carousel
+                }).observe(thisSlider[0])
+            })
+        }
+    }
+
     // element info grid slider
     const elementInfoGridSlider = ($scope, $) => {
         const infoGridSlider = $scope.find('.element-info-grid-slider')
@@ -192,6 +230,9 @@
 
         // /* Element carousel images */
         // elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-carousel-images.default', ElementCarouselSlider);
+
+        // element slider banner
+        elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-banner.default', elementBannerSlider);
 
         // element info grid slider
         elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-info-grid-slider.default', elementInfoGridSlider);

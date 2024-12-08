@@ -288,7 +288,7 @@ if ( class_exists( 'CSF' ) ) {
                         'default'  => array(
                             'url'    => 'bcolor.vn',
                             'text'   => 'www.bcolor.vn',
-                            'target' => '_blank'
+                            'target' => ''
                         ),
                     ),
 
