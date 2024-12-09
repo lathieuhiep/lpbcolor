@@ -77,7 +77,7 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
 }
 
 // Register scripts
-add_action( 'wp_enqueue_scripts', 'lpbcolor_elementor_scripts', 11 );
+add_action( 'wp_enqueue_scripts', 'lpbcolor_elementor_scripts' );
 function lpbcolor_elementor_scripts(): void {
 	$lpbcolor_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
@@ -85,12 +85,15 @@ function lpbcolor_elementor_scripts(): void {
 		// style
 
         wp_enqueue_style( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
-        wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
+
+        wp_enqueue_style( 'lpbcolor-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/addons.min.css' ), array(), lpbcolor_get_version_theme() );
 
 //		wp_enqueue_style( 'swiper-bundle.min', get_theme_file_uri( '/assets/libs/swiper/swiper-bundle.min.css' ), array(), '11.1.15' );
 //        wp_enqueue_script( 'swiper-bundle.min', get_theme_file_uri( '/assets/libs/swiper/swiper-bundle.min.js' ), array( 'jquery' ), '11.1.15', true );
 
-		wp_enqueue_style( 'lpbcolor-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/addons.min.css' ), array(), lpbcolor_get_version_theme() );
+
+        wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
+
 		wp_enqueue_script( 'lpbcolor-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
 	}
 }
