@@ -47,7 +47,7 @@
 
                 // Theo dõi kích thước khối chứa thay đổi và cập nhật Owl Carousel
                 new ResizeObserver(() => {
-                    owl.trigger('refresh.owl.carousel'); // Làm mới Owl Carousel
+                    thisSlider.trigger('refresh.owl.carousel'); // Làm mới Owl Carousel
                 }).observe(thisSlider[0])
             })
         }
@@ -228,6 +228,6 @@
 
         /* Element countdown timer */
         elementorFrontend.hooks.addAction('frontend/element_ready/lpbcolor-countdown-timer.default', elementCountdownTimer);
-    });
+    })
 
 })(jQuery);

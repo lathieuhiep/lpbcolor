@@ -43,16 +43,6 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-grid-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slides.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-text.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-carousel.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/carousel-images.php' );
-
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info-box.php' );
-
 	// register add on
     $widgets_manager->register( new \LPBColor_Elementor_Banner() );
     $widgets_manager->register( new \LPBColor_Elementor_Button() );
@@ -65,35 +55,36 @@ function lpbcolor_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \LPBColor_Elementor_Info_Card() );
     $widgets_manager->register( new \LPBColor_Elementor_Info_Grid_Slider() );
     $widgets_manager->register( new \LPBColor_Elementor_Testimonial_Slider() );
-
-//	$widgets_manager->register( new \lpbcolor_Elementor_Slides() );
-//	$widgets_manager->register( new \lpbcolor_Elementor_About_Text() );
-//	$widgets_manager->register( new \lpbcolor_Elementor_Post_Carousel() );
-//	$widgets_manager->register( new \lpbcolor_Elementor_Post_Grid() );
-
-//	$widgets_manager->register( new \lpbcolor_Elementor_Carousel_Images() );
-
-//	$widgets_manager->register( new \lpbcolor_Elementor_Info_Box() );
 }
 
+// Register scripts libs
+add_action( 'wp_enqueue_scripts', 'lpbcolor_libs_elementor_scripts', 10 );
+function lpbcolor_libs_elementor_scripts(): void
+{
+    wp_enqueue_style( 'owl.carousel',
+        get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ),
+        array(),
+        '2.3.4'
+    );
+}
+
+add_action('elementor/frontend/after_register_scripts', function () {
+    wp_enqueue_script('owl.carousel',
+        get_theme_file_uri('/assets/libs/owl.carousel/owl.carousel.min.js'),
+        array('jquery'),
+        '2.3.4',
+        true
+    );
+});
+
 // Register scripts
-add_action( 'wp_enqueue_scripts', 'lpbcolor_elementor_scripts' );
+add_action( 'wp_enqueue_scripts', 'lpbcolor_elementor_scripts', 11 );
 function lpbcolor_elementor_scripts(): void {
 	$lpbcolor_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
 	if ( $lpbcolor_check_elementor == 'builder' ) {
-		// style
-
-        wp_enqueue_style( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
-
         wp_enqueue_style( 'lpbcolor-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/addons.min.css' ), array(), lpbcolor_get_version_theme() );
 
-//		wp_enqueue_style( 'swiper-bundle.min', get_theme_file_uri( '/assets/libs/swiper/swiper-bundle.min.css' ), array(), '11.1.15' );
-//        wp_enqueue_script( 'swiper-bundle.min', get_theme_file_uri( '/assets/libs/swiper/swiper-bundle.min.js' ), array( 'jquery' ), '11.1.15', true );
-
-
-        wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
-
-		wp_enqueue_script( 'lpbcolor-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
+        wp_enqueue_script( 'lpbcolor-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery', 'owl.carousel' ), '1.0.0', true );
 	}
 }

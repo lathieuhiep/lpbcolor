@@ -316,9 +316,9 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
                         if ( $galleries ) :
                             foreach ( $galleries as $gallery ) :
                         ?>
-                            <div class="item">
+                            <a class="item d-block" href="<?php echo esc_url( wp_get_attachment_image_url( $gallery['id'], 'full' ) ); ?>" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="my-slideshow">
                                 <?php echo wp_get_attachment_image( $gallery['id'], $settings['image_size'] ); ?>
-                            </div>
+                            </a>
                         <?php
                             endforeach;
                         endif;
