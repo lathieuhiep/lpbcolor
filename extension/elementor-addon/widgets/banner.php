@@ -199,12 +199,11 @@ class LPBColor_Elementor_Banner extends Widget_Base
         );
 
         $this->add_control(
-            'btn_image', [
-                'label' => esc_html__( 'Nút hình ảnh', 'lpbcolor' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
+            'btn_text', [
+                'label' => esc_html__( 'Văn bản', 'lpbcolor' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__( 'Đăng ký tư vấn ngay!' , 'lpbcolor' ),
+                'label_block' => true,
             ]
         );
 
@@ -313,16 +312,25 @@ class LPBColor_Elementor_Banner extends Widget_Base
                 if ( ! empty( $settings['link']['url'] ) ) :
                     $this->add_link_attributes( 'link', $settings['link'] );
                     ?>
-                    <a class="link" <?php $this->print_render_attribute_string( 'link' ); ?>>
-                        <?php echo wp_get_attachment_image( $settings['btn_image']['id'], 'medium' ); ?>
+                    <a class="link d-inline-block theme-color-secondary fw-900" <?php $this->print_render_attribute_string( 'link' ); ?>>
+                        <?php echo esc_html( $settings['btn_text'] ); ?>
                     </a>
                 <?php endif; ?>
             </div>
 
             <div class="element-banner__owl owl-carousel owl-theme">
-                <?php foreach ( $settings['gallery'] as $image  ): ?>
+                <?php
+                foreach ( $settings['gallery'] as $image  ):
+                    $caption = wp_get_attachment_caption($image['id']);
+                ?>
                     <div class="thumbnail" data-featured-image="<?php echo esc_url( wp_get_attachment_image_url($image['id'], 'full') ); ?>">
-                        <?php echo wp_get_attachment_image( $image['id'], 'medium' ); ?>
+                        <div class="img-box d-inline-block m-auto">
+                            <?php echo wp_get_attachment_image( $image['id'], 'medium' ); ?>
+
+                            <p class="caption theme-color-white text-end mt-1 pe-5">
+                                <?php echo esc_html( $caption ); ?>
+                            </p>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
