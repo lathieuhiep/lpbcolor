@@ -64,7 +64,11 @@
                 items: 1,
                 nav: false,
                 dots: false,
-                margin: 12
+                margin: 12,
+                autoplayTimeout: 3000,
+                animateOut: 'animate__fadeOut',
+                animateIn: 'animate__fadeIn',
+                smartSpeed: 1000
             }
 
             const mainSlider = slider.owlCarousel(owlCarouselElementorOptions(options));
