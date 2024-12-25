@@ -1,7 +1,14 @@
 .element-tik-tok-video {
   display: grid;
   gap: 1.2rem;
-  grid-template-columns: repeat(3, 1fr);
+
+  @media (min-width: 680px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 576px) and (max-width: 679px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   blockquote {
     padding: 0;
