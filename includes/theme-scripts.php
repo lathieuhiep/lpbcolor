@@ -31,7 +31,7 @@ function lpbcolor_register_front_end(): void {
 	/** Load css **/
 
 	// font google
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap', array(), null );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Roboto:wght@400;500&display=swap', array(), null );
 
 	// fontawesome
 	wp_enqueue_style( 'fontawesome', get_theme_file_uri( '/assets/libs/fontawesome/css/fontawesome.min.css' ), array(), null );

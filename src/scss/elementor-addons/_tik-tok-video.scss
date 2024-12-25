@@ -1,0 +1,11 @@
+.element-tik-tok-video {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  blockquote {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+}

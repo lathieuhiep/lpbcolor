@@ -64,6 +64,7 @@
                 items: 1,
                 nav: false,
                 dots: false,
+                loop: false,
                 margin: 12,
                 autoplayTimeout: 3000,
                 animateOut: 'animate__fadeOut',
@@ -98,6 +99,34 @@
 
             // Đặt active ban đầu cho thumbnail đầu tiên
             updateThumbnails(0);
+
+            // popup gallery
+            slider.each(function() {
+                const $this = $(this)
+
+                $(this).magnificPopup({
+                    delegate: '.owl-item:not(.cloned) a', // the selector for gallery item
+                    type: 'image',
+                    gallery: {
+                        enabled:true
+                    },
+                    callbacks: {
+                        elementParse: function(item) {
+                            item.src = item.el.attr('data-image');
+                        },
+                        
+                        imageLoadComplete: function() {
+                            // Thêm class mfp-img-loaded khi ảnh mới đã tải xong
+                            if (this.content && this.content.find('img').length) {
+                                var img = this.content.find('img');
+                                setTimeout(function() {
+                                    img.addClass('mfp-img-loaded');
+                                }, 10); // Delay nhẹ
+                            }
+                        }
+                    }
+                });
+            });
         }
     }
 
