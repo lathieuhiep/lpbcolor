@@ -70,8 +70,6 @@ function lpbcolor_libs_elementor_scripts(): void
         array(),
         '2.3.4'
     );
-
-    wp_enqueue_style('magnific-popup', get_theme_file_uri('/assets/libs/magnific-popup/magnific-popup.min.css'), array(), '');
 }
 
 add_action('elementor/frontend/after_register_scripts', function () {
@@ -79,13 +77,6 @@ add_action('elementor/frontend/after_register_scripts', function () {
         get_theme_file_uri('/assets/libs/owl.carousel/owl.carousel.min.js'),
         array('jquery'),
         '2.3.4',
-        true
-    );
-
-    wp_enqueue_script('magnific-popup',
-        get_theme_file_uri('/assets/libs/magnific-popup/jquery.magnific-popup.min.js'),
-        array('jquery'),
-        '',
         true
     );
 });

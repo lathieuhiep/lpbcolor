@@ -1,6 +1,23 @@
 @use "../abstracts/abstracts" as *;
 
 .owl-carousel {
+  .animated {
+    animation-duration: 1000ms;
+    animation-fill-mode: both;
+  }
+
+  .owl-animated-in {
+    z-index: 0;
+  }
+
+  .owl-animated-out {
+    z-index: 1;
+  }
+
+  .fadeOut {
+    animation-name: fadeOut;
+  }
+
   .owl-nav {
     text-align: center;
     margin-top: 15px;
@@ -56,5 +73,15 @@
       display: flex;
       flex: 1 0 auto;
     }
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

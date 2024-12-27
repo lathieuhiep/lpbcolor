@@ -316,9 +316,9 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
                         if ( $galleries ) :
                             foreach ( $galleries as $gallery ) :
                         ?>
-                            <a class="item d-block" href="#" data-image="<?php echo esc_url( wp_get_attachment_image_url( $gallery['id'], 'full' ) ); ?>">
+                            <div class="item d-block" data-image="<?php echo esc_url( wp_get_attachment_image_url( $gallery['id'], 'full' ) ); ?>">
                                 <?php echo wp_get_attachment_image( $gallery['id'], $settings['image_size'] ); ?>
-                            </a>
+                            </div>
                         <?php
                             endforeach;
                         endif;
@@ -350,6 +350,27 @@ class LPBColor_Elementor_Info_Grid_Slider extends Widget_Base
                         endif;
                         ?>
                     </div>
+                </div>
+            </div>
+
+            <div class="popup">
+                <div class="popup-content d-flex align-items-center">
+                    <button class="btn close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <img class="popup-image" src="" alt="Popup Image">
+
+                    <div class="popup-nav">
+                        <button class="btn prev">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </button>
+                        <button class="btn next">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="popup-count"></div>
                 </div>
             </div>
         </div>

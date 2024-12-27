@@ -56,77 +56,96 @@
     // element info grid slider
     const elementInfoGridSlider = ($scope, $) => {
         const infoGridSlider = $scope.find('.element-info-grid-slider')
-        const slider = infoGridSlider.find('.feature-image')
-        const thumbnail = infoGridSlider.find('.thumbnail')
+        const mainSlider = infoGridSlider.find('.feature-image')
+        const thumbnails = infoGridSlider.find('.thumbnail')
 
-        if (slider.length) {
+        if (mainSlider.length) {
             const options = {
                 items: 1,
                 nav: false,
                 dots: false,
                 loop: false,
+                touchDrag: false,
                 margin: 12,
-                autoplayTimeout: 3000,
-                animateOut: 'animate__fadeOut',
-                animateIn: 'animate__fadeIn',
-                smartSpeed: 1000
+                animateOut: 'fadeOut',
+                responsive: {
+                    0 : {
+                        mouseDrag: false
+                    }
+                }
             }
 
-            const mainSlider = slider.owlCarousel(owlCarouselElementorOptions(options));
-
-            // Cập nhật class active cho thumbnail
-            function updateThumbnails(currentIndex) {
-                thumbnail.removeClass("active")
-                thumbnail.eq(currentIndex).addClass("active")
-            }
-
-            // Khi slide chính thay đổi
-            mainSlider.on("changed.owl.carousel", function (event) {
-                let currentIndex = event.item.index - event.relatedTarget._clones.length / 2
-                const totalItems = event.item.count
-
-                currentIndex = (currentIndex + totalItems) % totalItems;
-                updateThumbnails(currentIndex)
+            mainSlider.owlCarousel(
+                owlCarouselElementorOptions(options)
+            ).on("changed.owl.carousel", function (event) {
+                const index = event.item.index
+                thumbnails.removeClass("active")
+                thumbnails.eq(index).addClass("active")
             })
 
             // Khi click vào thumbnail
-            thumbnail.on("click", function () {
-                const slideIndex = $(this).index()
+            thumbnails.on("click", function () {
+                const index = $(this).index()
+                mainSlider.trigger("to.owl.carousel", [index, 250])
+            })
 
-                mainSlider.trigger("to.owl.carousel", [slideIndex, 800])
-                updateThumbnails(slideIndex)
-            });
+            // Set initial active thumbnail
+            thumbnails.eq(0).addClass("active")
 
-            // Đặt active ban đầu cho thumbnail đầu tiên
-            updateThumbnails(0);
+            // popup
+            const listMainImage = mainSlider.find('.owl-item')
+            const popup = infoGridSlider.find('.popup')
+            const closeBtn = popup.find('.close')
+            const prevBtn = popup.find('.prev')
+            const nextBtn = popup.find('.next')
+            const countDisplay = popup.find('.popup-count')
 
-            // popup gallery
-            slider.each(function() {
-                const $this = $(this)
+            let currentIndex = -1
+            
+            const showPopup = (index) => {
+                const imageSrc = listMainImage.eq(index).find('.item').attr('data-image')
+                const totalItems = listMainImage.length
 
-                $(this).magnificPopup({
-                    delegate: '.owl-item:not(.cloned) a', // the selector for gallery item
-                    type: 'image',
-                    gallery: {
-                        enabled:true
-                    },
-                    callbacks: {
-                        elementParse: function(item) {
-                            item.src = item.el.attr('data-image');
-                        },
-                        
-                        imageLoadComplete: function() {
-                            // Thêm class mfp-img-loaded khi ảnh mới đã tải xong
-                            if (this.content && this.content.find('img').length) {
-                                var img = this.content.find('img');
-                                setTimeout(function() {
-                                    img.addClass('mfp-img-loaded');
-                                }, 10); // Delay nhẹ
-                            }
-                        }
-                    }
+                popup.find('.popup-image').fadeOut(200, function() {
+                    $(this).attr('src', imageSrc).fadeIn(200);
                 });
-            });
+
+                // update count image
+                countDisplay.text(`${index + 1}/${totalItems}`)
+
+                popup.fadeIn();
+            }
+
+            // open popup when click image
+            mainSlider.on('click', '.owl-item', function() {
+                currentIndex = listMainImage.index(this)
+                showPopup(currentIndex)
+            })
+
+            // close popup
+            closeBtn.on('click', function() {
+                $(this).closest('.popup').fadeOut()
+            })
+
+            // prev image
+            prevBtn.on('click', function() {
+                currentIndex = (currentIndex - 1 + listMainImage.length) % listMainImage.length
+                showPopup(currentIndex)
+            })
+
+            // next image
+            nextBtn.on('click', function() {
+                currentIndex = (currentIndex + 1) % listMainImage.length
+                showPopup(currentIndex)
+            })
+
+            // close popup when clicking outside the content
+            popup.on('click', function(event) {
+                if ($(event.target).is($(this))) {
+                    $(this).fadeOut()
+                }
+            })
+
         }
     }
 
