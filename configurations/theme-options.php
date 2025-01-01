@@ -294,9 +294,16 @@ if ( class_exists( 'CSF' ) ) {
 
                     array(
                         'id'    => 'address',
-                        'type'  => 'text',
-                        'title' => esc_html__( 'Địa chỉ', 'lpbcolor' ),
+                        'type'  => 'textarea',
+                        'title' => esc_html__( 'Địa chỉ 1', 'lpbcolor' ),
                         'default' => esc_html__('Hải Âu 16-89, Vinhomes Ocean Park, Gia Lâm, Hà Nội', 'lpbcolor')
+                    ),
+
+                    array(
+                        'id'    => 'address_2',
+                        'type'  => 'textarea',
+                        'title' => esc_html__( 'Địa chỉ 2', 'lpbcolor' ),
+                        'default' => esc_html__('Cụm công nghiệp Kiêu Kỵ, Thôn Gia Cốc, Xã Kiêu Kỵ, Huyện Gia Lâm, Thành phố Hà Nội, Việt Nam', 'lpbcolor')
                     ),
                 ),
             ),
@@ -317,13 +324,28 @@ if ( class_exists( 'CSF' ) ) {
                     ),
 
                     array(
-                        'id'    => 'link_tiktok',
-                        'type'  => 'link',
-                        'title' => esc_html__( 'Địa chỉ TikTok', 'lpbcolor' ),
-                        'default'  => array(
-                            'url'    => '#',
-                            'text'   => 'TikTok',
-                            'target' => '_blank'
+                        'id'     => 'opt_tiktok_list',
+                        'type'   => 'repeater',
+                        'title'  => esc_html__( 'Tiktok', 'lpbcolor' ),
+                        'fields' => array(
+                            array(
+                                'id'      => 'avatar',
+                                'type'    => 'media',
+                                'title'   => esc_html__( 'Ảnh đại diện', 'lpbcolor' ),
+                                'library' => 'image',
+                            ),
+
+                            array(
+                                'id'    => 'url',
+                                'type'  => 'text',
+                                'title' => esc_html__( 'URL', 'lpbcolor' ),
+                            ),
+
+                            array(
+                                'id'    => 'channel_name',
+                                'type'  => 'text',
+                                'title' => esc_html__( 'Tên kênh', 'lpbcolor' ),
+                            ),
                         ),
                     ),
                 ),

@@ -67,17 +67,31 @@ $quick_link = lpbcolor_get_option('opt_footer_quick_link');
 
                     <?php endif; ?>
 
-                    <?php if ( $contact['link_website'] ) : ?>
+                    <?php if ( $contact['address'] ) : ?>
 
                     <div class="contact__item">
                         <div class="icon">
-                            <i class="fas fa-location-dot"></i>
+                            <i class="fas fa-building"></i>
                         </div>
 
                         <p class="address">
-                            <?php echo esc_html( $contact['address'] ); ?>
+                            <?php echo nl2br( $contact['address'] ); ?>
                         </p>
                     </div>
+
+                    <?php endif; ?>
+
+                    <?php if ( $contact['address_2'] ) : ?>
+
+                        <div class="contact__item">
+                            <div class="icon">
+                                <i class="fas fa-boxes-stacked"></i>
+                            </div>
+
+                            <p class="address">
+                                <?php echo nl2br( $contact['address_2'] ); ?>
+                            </p>
+                        </div>
 
                     <?php endif; ?>
                 </div>
@@ -103,14 +117,19 @@ $quick_link = lpbcolor_get_option('opt_footer_quick_link');
                 </div>
                 <?php endif; ?>
 
-                <?php if ( $quick_link['link_tiktok'] ) : ?>
-                <div class="tiktok-warp text-md-end">
-                    <a class="link d-inline-flex align-items-center gap-5" href="<?php echo esc_url( $quick_link['link_tiktok']['url'] ); ?>"
-                       target="<?php esc_attr( $quick_link['link_tiktok']['target'] ); ?>"
-                    >
-                        <span class="icon d-inline-flex align-items-center justify-content-center"><i class="fa-brands fa-tiktok"></i></span>
-                        <span class="text"><?php echo esc_html( $quick_link['link_tiktok']['text'] ); ?></span>
-                    </a>
+                <?php if ( $quick_link['opt_tiktok_list'] ) : ?>
+                <div class="tiktok-warp d-flex flex-wrap gap-4">
+                    <?php foreach ( $quick_link['opt_tiktok_list'] as $tiktok) : ?>
+                        <a class="link d-inline-flex align-items-center gap-5" href="<?php echo esc_url( $tiktok['url'] ); ?>" target="_blank">
+                            <?php if ( $tiktok['avatar'] ) : ?>
+                                <figure class="avatar">
+                                    <?php echo wp_get_attachment_image( $tiktok['avatar']['id'] ); ?>
+                                </figure>
+                            <?php endif; ?>
+
+                            <span class="text"><?php echo esc_html( $tiktok['channel_name'] ); ?></span>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
             </div>

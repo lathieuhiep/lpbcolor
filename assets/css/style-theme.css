@@ -801,10 +801,9 @@ section.widget .recent-post-widget__list .meta i.fa {
   border-top: 1px solid var(--lp-bcolor-color-primary);
   padding: 7.4rem 0 3rem;
 }
-@media (max-width: 991px) {
-  .global-footer__column .introduce .heading {
-    font-size: 1.6rem;
-  }
+.global-footer__column .introduce .heading {
+  font-size: 1.6rem;
+  font-weight: 900;
 }
 .global-footer__column .contact__item {
   display: grid;
@@ -836,13 +835,11 @@ section.widget .recent-post-widget__list .meta i.fa {
   background-color: var(--btn-background, var(--lp-bcolor-color-primary));
   transition: all 0.4s ease-in-out;
 }
-.global-footer__column .tiktok-warp .link .icon {
+.global-footer__column .tiktok-warp .link .avatar {
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
-  font-size: 2.1rem;
-  color: var(--lp-bcolor-color-primary);
-  background-color: var(--lp-bcolor-color-white);
+  border: 0.2rem solid var(--lp-bcolor-color-white);
 }
 .global-footer__column .tiktok-warp .link .text {
   line-height: 1;

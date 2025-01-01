@@ -13,9 +13,8 @@
 
     .introduce {
       .heading {
-        @media (max-width: 991px) {
-          font-size: 1.6rem;
-        }
+        font-size: 1.6rem;
+        font-weight: 900;
       }
     }
 
@@ -67,11 +66,9 @@
         background-color: var(--btn-background, var(--#{$prefix-my-theme}color-primary));
         transition: all .4s ease-in-out;
 
-        .icon {
+        .avatar {
           @include square(2.8rem, 50%);
-          font-size: 2.1rem;
-          color: var(--#{$prefix-my-theme}color-primary);
-          background-color: var(--#{$prefix-my-theme}color-white);
+          border: .2rem solid var(--#{$prefix-my-theme}color-white);
         }
 
         .text {
