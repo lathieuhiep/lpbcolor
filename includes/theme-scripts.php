@@ -19,6 +19,20 @@ function lpbcolor_remove_jquery_migrate( $scripts ): void {
 
 // Register Front-End Styles
 add_action('wp_enqueue_scripts', 'lpbcolor_register_front_end');
+
+// Load preconnect and preload for fonts and fontawesome
+add_action( 'wp_head', function() {
+    // Preconnect and preload for Google Fonts
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+    echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Roboto:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
+
+    // Preconnect and preload for Font Awesome
+    echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com">';
+    echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>';
+    echo '<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
+}, 5);
+
 function lpbcolor_register_front_end(): void {
 	// remove style gutenberg
 	wp_dequeue_style('wp-block-library');
@@ -29,12 +43,6 @@ function lpbcolor_register_front_end(): void {
 	wp_dequeue_style('storefront-gutenberg-blocks');
 
 	/** Load css **/
-
-	// font google
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Roboto:wght@400;500&display=swap', array(), null );
-
-	// fontawesome
-	wp_enqueue_style( 'fontawesome', get_theme_file_uri( '/assets/libs/fontawesome/css/fontawesome.min.css' ), array(), null );
 
 	// bootstrap css
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), null );
