@@ -20,6 +20,18 @@ function lpbcolor_remove_jquery_migrate( $scripts ): void {
 // Register Front-End Styles
 add_action('wp_enqueue_scripts', 'lpbcolor_register_front_end');
 
+// Remove WordPress block library CSS from loading on the front-end
+function lpbcolor_remove_wp_block_library_css(): void {
+    // remove style gutenberg
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style( 'classic-theme-styles' );
+
+    wp_dequeue_style('wc-blocks-style');
+    wp_dequeue_style('storefront-gutenberg-blocks');
+}
+add_action( 'wp_enqueue_scripts', 'lpbcolor_remove_wp_block_library_css', 100 );
+
 // Load preconnect and preload for fonts and fontawesome
 add_action( 'wp_head', function() {
     // Preconnect and preload for Google Fonts
